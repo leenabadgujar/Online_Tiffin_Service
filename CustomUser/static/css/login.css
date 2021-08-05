@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+:root{
+  --main-color : orange;
+}
+body {
+  background-image: url("https://images.creativemarket.com/0.1.0/ps/3945807/3240/2160/m1/fpnw/wm0/cupcake4-.jpg?1517614692&s=360f86579c451a598db328ad86712677");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  object-fit: cover;
+  background-color: #ffffff;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  overflow-y: hidden;
+  display: grid;
+  place-items: center;
+}
+.cover {
+  width: 100%;
+  height: 92vh;
+}
+.box {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  bottom: 10%;
+  transform: translateX(-50%);
+}
+.spacing {
+  letter-spacing: 5px;
+}
+.box-desc {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  max-width: 400px;
+}
+.check-desc {
+  font-size: 14px;
+  max-width: 400px;
+}
+.hr {
+  height: 8px;
+  width: 80px;
+  background-color: var(--main-color);
+  border-radius: 50px;
+  margin: 16px;
+}
+.judul {
+  color: var(--main-color);
+}
+.desc {
+  font-size: 14px;
+  color: #c7c8ca;
+  margin-top: 24px;
+}
+.text-bold {
+  font-weight: bold;
+}
+.link {
+  text-decoration: underline;
+  color: var(--main-color)!important;
+  font-weight: bold;
+}
+.placeicon {
+  font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
+}
+.box1 {
+  padding-right: 0;
+}
+.box2 {
+  padding-left: 0;
+}
+.home {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 25px;
+}
+.home i{
+  color: var(--main-color);
+}
+.block {
+  width: 100%;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.form-login {
+  width: 100%;
+  padding: 10px 20px;
+  display: inline-block;
+  border: 0px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  transition: 300ms;
+  font-weight: 500;
+}
+.form-login:focus {
+  background-color: #fff;
+  outline: none;
+}
+.form-left{
+  padding: 0 80px;
+}
+.border-left {
+  border-left: 6px solid var(--main-color);
+}
+.font-check {
+  color: #a4b6d6;
+  font-size: 16px;
+}
+.button{
+  background-color: var(--main-color);
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+}
+.button:hover{
+  color: white;
+}
+.cover_content{
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 19px;
+}
+::placeholder {
+  color: #d2d3d5;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: #d2d3d5;
+}
+
+::-ms-input-placeholder {
+  color: #d2d3d5;
+}
+
+@media (max-width: 500px)
+{
+  .form-left{
+    padding: 0 20px;
+  }
+}
