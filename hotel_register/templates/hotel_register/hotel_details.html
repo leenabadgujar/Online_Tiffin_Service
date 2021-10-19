@@ -1,0 +1,85 @@
+{% extends "food/base.html" %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/hotel_details.css' %}">
+{% endblock style %}
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div id="message" class="message">
+            <h6 id="message_text" class="w-100 mb-0 text_{{message.tags}}">{{message}}</h6>
+            <div id="underline" class="underline bg_{{message.tags}}"></div>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="container-fluid hotel-dashboard">
+    <div class="row h_100">
+        <div class="col-12 col-md-4 bg_black left">
+            <div class="bg_orange">
+                <center>
+                    <h1 class="section-title service-content section-color heading">Online Tiffin Services
+                    </h1>
+                    <a href="{% url 'dashboard' %}" class="contact__description service-content">DashBoard</a>
+                </center>
+            </div>
+
+            <div class="px-lg-4">
+                <img src="{{hotel.image.url}}" class="food">
+            </div>
+
+            <div class="px-5">
+                <div class="d-flex align-items-center justify-content-between mt-4 mb-3">
+                    <h4 class="fw-bold text_orange my-0 course_heading">{{hotel.name}}</h4>
+                    <a href="{% url 'update_hotel' hotel.id %}"><i class="fas fa-pen text-light"></i></a>
+                </div>
+                <h6 class="fw-bold bg_white">{{hotel.address}}, {{hotel.city}} - {{hotel.pincode}}</h6>
+                <p class="fw-bold bg_white">{{hotel.hotel_number}}</p>
+                <p class="fw-bold mb-4 bg_white">{{hotel.hotel_email}}</p>
+                <!--<hr class="my-4">
+                <h5 class="fw-bold">Instructor</h5>
+                <div class="d-flex mt-3 align-items-center">
+                    <img src=/media/files/user/pranav.jpg class="instructor_image" alt="">
+                    <h4 class="fw-bold mx-4">Pranav Aher</h4>
+                </div>-->
+            </div>
+
+
+
+        </div>
+        <div class="col-12 col-md-8 py-5 px-0">
+
+            <div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end px-4 py-2">
+                    <a href="{% url 'add_menu' hotel.id %}" class="button btn btn-dark me-md-2"><i class="fas fa-list-ul"></i> Add Menu Items</a>
+                    <a href="{% url 'update_hotel' hotel.id %}" class="button btn btn-dark">Edit Hotel</a>
+                </div>
+            </div>
+
+            <a href="{% url 'add_menu' hotel.id %}"
+                class="d-flex text-dark video_list px-3 px-lg-4">
+                <h5 class="fw-bold" style="margin-right: 20px;">Add Menu Items</h5>
+            </a>
+
+            {% for menu_item in menu_items %}
+            <a href="{% url 'update_menu' menu_item.id %}"
+            class="d-flex text-dark justify-content-between video_list px-3 px-lg-4">
+                <h5 class="fw-bold" style="margin-right: 20px;">
+                    <i class="fas fa-caret-right"></i>  {{menu_item.name}} -> Rs. {{menu_item.price}}
+                </h5>
+
+            </a>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block customscript %}
+<script src="https://unpkg.com/scrollreveal"></script>
+    <script src="{% static 'js/base.js' }"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock customscript %}

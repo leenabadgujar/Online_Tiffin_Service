@@ -9,7 +9,7 @@ class CustomUserManager(BaseUserManager):
             raise ValueError("Enter Your Name.")
         if not number:
             raise ValueError("Enter Your Number.")
-
+        print(password)
         user = self.model(
             email = self.normalize_email(email),
             name = name,

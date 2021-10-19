@@ -1,0 +1,38 @@
+/*--========== Title line ==========*/
+.seperator {
+  display: flex;
+  align-items: center;
+}
+.line {
+  width: 100%;
+  max-width: 19rem;
+  height: 0.25rem;
+  background-color: rgb(2, 2, 2);
+  position: relative;
+}
+.line-right::before,
+.line-left::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0.6rem solid transparent;
+}
+.line-right::before {
+  border-right-color: rgb(0, 0, 0);
+  right: 0;
+}
+.line-left::before {
+  border-left-color: rgb(0, 0, 0);
+  left: 0;
+}
+.asterisk {
+  font-size: 1.2rem;
+  color: orange;
+  margin: 0 1.6rem;
+}
+
+.btn {
+  margin-right: 20px;
+  margin-top: 20px;
+}

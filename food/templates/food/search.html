@@ -1,0 +1,83 @@
+{% extends "food/base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock style %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{message.tags}}" role="alert">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <div class="mt-5 pt-5 container">
+    {% if menu_items %}
+        <h2 class="fw-bold px-3 pb-1">Food Items</h2>
+        {% for menu_item in menu_items %}
+        <a href="{% url 'hotel_detail' menu_item.hotel.id %}" class="">
+            <div class="container my-3" >
+              <div class="row g-0 single-menu">
+                <div class="col-12 col-md-3 text-center">
+                  <img src="{{menu_item.image.url}}" class="food" alt="...">
+                </div>
+                <div class="col-12 col-md-9">
+                  <div class="card-body">
+                    <h4 class="card-title text-dark">{{menu_item.name}}<span><i class="fas fa-rupee-sign fs-5"></i> {{menu_item.price}}</span></h4>
+                    <p class="card-text text-dark">{{menu_item.description}}</p>
+                    <p class="card-text">
+                        <small class="text-muted">Cuisine : {{menu_item.food_type}}</small>
+                        <small class="text-muted">Hotel : {{menu_item.hotel.name}}</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </a>
+        {% endfor %}
+    {% endif %}
+
+    {% if hotels %}
+        <h2 class="fw-bold px-3 pb-1">Related Hotels</h2>
+        {% for hotel in hotels %}
+            <a href="{% url 'hotel_detail' hotel.id %}" class="">
+                <div class="container my-3" >
+                <div class="row g-0 single-menu">
+                    <div class="col-12 col-md-3 text-center">
+                    <img src="{{hotel.image.url}}" class="food" alt="...">
+                    </div>
+                    <div class="col-12 col-md-9">
+                    <div class="card-body">
+                        <h4 class="card-title text-dark">{{hotel.name}}</h4>
+                        <p class="card-text text-dark">{{hotel.description}}</p>
+                        <p class="card-text text-secondary">
+                            Hotel Address :- {{hotel.address}}, {{hotel.city}} - {{hotel.pincode}}
+                        </p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </a>
+        {% endfor %}
+    {% endif %}
+    </div>
+
+    {% if not menu_items and not hotels %}
+        <div class="container">
+            <h2 class="text-danger pb-4">No result found</h2>
+        </div>
+    {% endif %}
+{% endblock content %}
+{% block script %}
+    <script>
+        var product_desc = document.querySelectorAll('.product_desc')
+        for (let int = 0; int < product_desc.length; int++) {
+            const string = product_desc[int].innerText;
+            var string150 = string.substr(0, 170) 
+            product_desc[int].innerHTML = string150 + '  ....' 
+        }
+    </script>
+{% endblock script %}  

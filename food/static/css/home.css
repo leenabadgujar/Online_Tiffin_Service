@@ -1,45 +1,5 @@
 /*===== GOOGLE FONTS =====*/
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@800&family=Poppins&display=swap');
-
-/*===== VARIABLES CSS =====*/
-:root {
-  --header-height: 3rem;
-
-  /*========== Colors ==========*/
-  --first-color: #483519;
-  --first-color-alt: orange;
-  --title-color: #393939;
-  --text-color: #707070;
-  --text-color-light: #a6a6a6;
-  --body-color: #fbfefd;
-  --container-color: #ffffff;
-
-  /*========== Font and typography ==========*/
-  --body-font: Poppins, sans-serif;
-  --biggest-font-size: 2.25rem;
-  --h1-font-size: 1.5rem;
-  --h2-font-size: 1.25rem;
-  --h3-font-size: 1rem;
-  --normal-font-size: 0.938rem;
-  --small-font-size: 0.813rem;
-  --smaller-font-size: 0.75rem;
-
-  /*========== Font weight ==========*/
-  --font-medium: 500;
-  --font-semi-bold: 600;
-
-  /*========== Margenes ==========*/
-  --mb-1: 0.5rem;
-  --mb-2: 1rem;
-  --mb-3: 1.5rem;
-  --mb-4: 2rem;
-  --mb-5: 2.5rem;
-  --mb-6: 3rem;
-
-  /*========== z index ==========*/
-  --z-tooltip: 10;
-  --z-fixed: 100;
-}
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@800&family=Poppins&display=swap");
 
 @media screen and (min-width: 768px) {
   :root {
@@ -59,13 +19,7 @@
 ::after {
   box-sizing: border-box;
 }
-::-webkit-scrollbar{
-  width: 8px;
-}
-::-webkit-scrollbar-thumb{
-  background-color: lightgray;
-  border-radius: 20px;
-}
+
 html {
   scroll-behavior: smooth;
 }
@@ -121,7 +75,7 @@ img {
 
 /*========== CLASS CSS ==========*/
 .section {
-  padding: 10rem 0 2rem;
+  padding: 2rem 0 2rem;
 }
 
 .section-title,
@@ -132,8 +86,8 @@ img {
 .section-title {
   font-size: var(--h1-font-size);
   color: black;
-  margin-bottom: var(--mb-3);
-  font-family: 'EB Garamond', serif;
+  padding-bottom: var(--mb-3);
+  font-family: "EB Garamond", serif;
 }
 
 .section-subtitle {
@@ -155,7 +109,6 @@ img {
 .color-container {
   background-color: #b56f58;
 }
-
 .bd-grid {
   display: grid;
   gap: 1.5rem;
@@ -167,79 +120,6 @@ img {
   left: 0;
   z-index: var(--z-fixed);
   background-color: white;
-}
-
-/*========== NAV ==========*/
-.nav {
-  max-width: 1024px;
-  height: var(--header-height);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-@media screen and (max-width: 768px) {
-  .nav__menu {
-    position: fixed;
-    top: -100%;
-    left: 0;
-    width: 100%;
-    padding: 1.5rem 0 1rem;
-    text-align: center;
-    background-color: white;
-    transition: 1s;
-    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 0 0 1rem 1rem;
-    z-index: var(--z-fixed);
-  }
-}
-
-.nav__item {
-  margin-bottom: var(--mb-2);
-}
-
-.nav__link,
-.nav__logo,
-.nav__toggle {
-  color: var(--text-color);
-  font-weight: var(--font-medium);
-  text-decoration: none;
-  font-family: var(--body-font);
-  font-size: 1rem;
-  font-weight: bold;
-}
-
-.nav-logo {
-  font-family: 'EB Garamond', serif;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.nav__logo:hover {
-  color: var(--first-color-alt);
-}
-
-.nav__link {
-  transition: 0.3s;
-}
-
-.nav__link:hover {
-  color: var(--first-color-alt);
-}
-
-.nav__toggle {
-  font-size: 1.3rem;
-  cursor: pointer;
-}
-
-/* Show menu */
-.show-menu {
-  top: var(--header-height);
-}
-
-/* Active menu */
-.active-link {
-  color: var(--first-color-alt);
 }
 
 /* Change background header */
@@ -289,14 +169,14 @@ img {
   font-size: var(--biggest-font-size);
   color: white;
   margin-bottom: var(--mb-1);
-  font-family: 'EB Garamond', serif;
+  font-family: "EB Garamond", serif;
 }
 
 .home__subtitle {
   font-size: var(--h1-font-size);
   color: var(--first-color-alt);
   margin-bottom: var(--mb-4);
-  font-family: 'EB Garamond', serif;
+  font-family: "EB Garamond", serif;
 }
 
 .home__img {
@@ -325,7 +205,7 @@ img {
 }
 
 /*========== ABOUT ==========*/
-.about{
+.about {
   background-color: var(--first-color-alt);
 }
 .about__data {
@@ -336,7 +216,7 @@ img {
 }
 .about__description {
   color: white;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   margin-bottom: var(--mb-3);
 }
 .about__img {
@@ -373,8 +253,8 @@ img {
   margin-bottom: var(--mb-1);
 }
 .services__description {
-  padding: .5rem 1.5rem;
-  font-family: 'Courier New', Courier, monospace;
+  padding: 0.5rem 1.5rem;
+  font-family: "Courier New", Courier, monospace;
   text-align: justify;
   text-justify: inter-word;
 }
@@ -395,9 +275,9 @@ img {
   padding: 0.75rem;
 }
 .menu__img {
-  border-radius: 100%;
-  width: 60%;
-  height: 80%;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
   align-self: center;
   margin-bottom: var(--mb-2);
 }
@@ -407,19 +287,19 @@ img {
   font-weight: var(--font-semi-bold);
   color: var(--title-color);
 }
-.menu__preci{
+.menu__preci {
   margin-bottom: 20px;
 }
 .menu__name {
   font-size: var(--normal-font-size);
   font-family: var(--body-font);
   color: black;
-  margin-bottom: var(--mb-2);
+  margin-bottom: var(--mb-1);
 }
 .menu__detail,
 .menu__preci {
   font-size: var(--h4-font-size);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
 }
 .menu__button {
   position: absolute;
@@ -429,31 +309,31 @@ img {
   padding: 0.625rem 0.813rem;
   border-radius: 0.5rem 0 0.5rem 0;
   background-color: black;
-  color: var(--first-color-alt)!important;
+  color: var(--first-color-alt) !important;
   font-size: 20px;
   text-decoration: none;
 }
-.view_more{
-  color: var(--first-color-alt)!important;
+.view_more {
+  color: var(--first-color-alt) !important;
   text-align: center;
   text-decoration: none;
 }
-.view_more:hover i{
+.view_more:hover i {
   padding-right: 10px;
 }
-.view_more i{
+.view_more i {
   font-size: 40px;
   border-radius: 50%;
   padding: 20px 25px;
-  transition: .5s ease all;
+  transition: 0.5s ease all;
 }
-.view_more > p{
-  font-family: 'Courier New', Courier, monospace;
+.view_more > p {
+  font-family: "Courier New", Courier, monospace;
   font-size: 19px;
   text-transform: uppercase;
 }
 .section-title-testi {
-  float: left!important;
+  float: left !important;
   position: relative;
   width: 100%;
   padding-bottom: 40px;
@@ -679,67 +559,10 @@ img {
 }
 .contact__description {
   margin-bottom: var(--mb-3);
-  font-family: 'Courier New', Courier, monospace;
+  font-family: "Courier New", Courier, monospace;
   color: white;
   font-size: 18px;
 }
-
-/*========== FOOTER ==========*/
-.footer__container {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  row-gap: 2rem;
-  font-family: var(--body-font);
-}
-.footer__logo {
-  font-size: var(--h3-font-size);
-  color: var(--first-color);
-  font-weight: var(--font-semi-bold);
-}
-.footer__description {
-  display: block;
-  font-size: var(--small-font-size);
-  margin: 0.25rem 0 var(--mb-3);
-}
-.footer__social {
-  font-size: 1.5rem;
-  color: var(--title-color);
-  margin-right: var(--mb-2);
-}
-.footer__logo:hover, .footer__social:hover{
-  color: var(--first-color-alt);
-}
-.footer__title {
-  font-size: var(--h2-font-size);
-  color: var(--title-color);
-  margin-bottom: var(--mb-2);
-  font-weight: 600;
-}
-.footer__link {
-  display: inline-block;
-  text-decoration: none;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 18px;
-  color: var(--text-color);
-  margin-bottom: 4px;
-}
-.footer__link:hover {
-  color: var(--first-color);
-}
-.address{
-  font-size: 18px;
-  font-family: 'Courier New', Courier, monospace;
-}
-.footer__text{
-  background-color: black;
-  margin-top: 2rem;
-}
-.footer__text p{
-  text-align: center;
-  padding: 20px;
-  color: white;
-  font-family: 'Courier New', Courier, monospace;
-}
-
 .section-color {
   color: #393939;
 }
@@ -789,7 +612,7 @@ img {
   .nav__list {
     display: flex;
   }
-  .nav__item { 
+  .nav__item {
     margin-left: var(--mb-5);
     margin-bottom: 0;
   }
@@ -814,16 +637,11 @@ img {
   .menu__content {
     padding: 1.5rem;
   }
-  .menu__img {
-    width: 70%;
-    /* width: 130px; */
-  }
-
   .app__store {
     margin: 0 var(--mb-1) 0 0;
   }
 }
-@media screen and (min-width: 1163px){
+@media screen and (min-width: 1163px) {
   .menu__container {
     grid-template-columns: repeat(4, 210px);
     column-gap: 4rem;
@@ -871,15 +689,13 @@ img {
   background-repeat: repeat-x;
   color: rgb(255, 255, 255) !important;
 }
-
-/*footer*/
-
-.footer-icon {
-  margin: 0px;
-}
-@media screen and (max-width : 575px){
-  .home__data{
+@media screen and (max-width: 575px) {
+  .home__data {
     padding-top: 50px;
     text-align: center;
+  }
+  .menu__img {
+    width: 70%;
+    /* width: 130px; */
   }
 }

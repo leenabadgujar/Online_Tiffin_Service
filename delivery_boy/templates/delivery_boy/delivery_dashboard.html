@@ -1,0 +1,88 @@
+{% extends "food/base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock style %}
+
+{% block content %}
+
+<div class="mydashboard" style="margin-bottom: 33px;">
+  <div id="mySidenav" class="sidenav sidenav_height">
+    <p class="logo"><span>O</span>nline Tiffin Services</p>
+    <a href="{% url 'accepted' %}" class="icon-a">Accepted Orders</a>
+    <a href="{% url 'pending' %}" class="icon-a">Pending Orders</a>
+    <a href="{% url 'rejected' %}" class="icon-a">Rejected orders</a>
+  </div>
+
+  <div id="main">
+
+    <div class="head">
+      <div class="col-div-6">
+        <span style="font-size:30px;cursor:pointer;" class="nav">&#9776; Dashboard</span>
+        <span style="font-size:30px;cursor:pointer;" class="nav2">&#9776; Dashboard</span>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+
+    <div class="col-div-3">
+      <div class="box">
+        <p>{{pending}}<br /><span>New Order</span></p>
+      </div>
+    </div>
+    <div class="col-div-3">
+      <div class="box">
+        <p>{{accepted}}<br /><span>Confirmed order</span></p>
+      </div>
+    </div>
+    <div class="col-div-3">
+      <div class="box">
+        <p>{{rejected}}<br /><span>Cancel Order</span></p>
+      </div>
+    </div>
+    <div class="col-div-3">
+      <div class="box">
+        <p>{{order}}<br /><span>All Order</span></p>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+    <br />
+    <div class="col-12">
+      <div class="box-8">
+        <div class="content-box">
+          <p>Your Confirmed Orders <span><a href="{% url 'accepted' %}">See all Confirmed Orders</a></span></p>
+          <br />
+          <table>
+            {% if accepted_applications %}
+            <tr>
+              <th>Customer Name</th>
+              <th>City</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+            </tr>
+            {% for application in accepted_applications %}
+            <tr>
+              <td>{{application.user.name}}</td>
+              <td>{{application.user.city}}</td>
+              <td>{{application.delivery_start}}</td>
+              <td>{{application.delivery_end}}</td>
+            </tr>
+            {% endfor %}
+            {% else %}
+            No Accepted Order
+            {% endif %}
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+
+{% endblock content %}
+{% block customscript %}
+
+<script>
+
+</script>
+
+{% endblock customscript %}

@@ -1,0 +1,124 @@
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@800&family=Poppins&display=swap");
+
+/*===== VARIABLES CSS =====*/
+:root {
+  --px-6: 5px 30px;
+}
+body {
+  background-color: rgb(248, 252, 255);
+}
+.bhead {
+  margin-top: 100px;
+}
+.boy {
+  margin: 80px 165px;
+  margin-top: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  margin-bottom: 80px;
+}
+.boy_heading {
+  font-family: Poppins, "Times New Roman", Times, serif;
+  font-weight: bold;
+  color: var(--first-color-alt);
+  text-transform: capitalize;
+}
+.boy_padding {
+  padding: var(--px-6);
+}
+hr {
+  color: black;
+  /* padding: 1px; */
+}
+.label {
+  display: block;
+  font-family: Poppins, "Times New Roman", Times, serif;
+  color: gray;
+  cursor: pointer;
+}
+input {
+  width: 100%;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid lightgray;
+  font-family: Poppins, "Courier New", Courier, monospace;
+  font-size: 15px;
+  outline: none;
+  padding: 5px 10px;
+}
+input[type = "file"]{
+  border: none;
+  padding: 0;
+}
+.radio_button input {
+  -ms-transform: scale(1.5);
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+  outline: none;
+  margin-right: 5px;
+  cursor: pointer;
+}
+.radio_button label {
+  font-family: Poppins, "Courier New", Courier, monospace;
+}
+select {
+  width: 100%;
+  margin: 10px 0;
+  padding: 5px;
+  border-color: lightgray;
+  outline: none;
+  border-radius: 4px;
+}
+.choose_img{
+  width: 100%;
+  border: 2px dashed lightgrey;
+  cursor: pointer;
+  position: relative;
+  height: 200px;
+  display: grid;
+  place-items: center;
+}
+.choose_img .inner_choose_img{
+  margin: 30px;
+  text-align: center;
+}
+.choose_img .inner_choose_img i{
+  font-size: 70px;
+  color: var(--first-color-alt);
+}
+.choose_img .inner_choose_img p{
+  padding-top: 10px;
+  color: gray;
+  font-size: 18px;
+}
+.choose_img img{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 196px;
+}
+#id_registation_form, #registation_form, #hotel{
+  display: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .boy {
+    margin: 80px 50px;
+    margin-top: 30px;
+    margin-bottom: 80px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .boy {
+    margin: 80px 20px;
+    margin-top: 70px;
+    margin-bottom: 80px;
+  }
+  .choose_img .inner_choose_img p{
+    font-size: 14px;
+  }
+}

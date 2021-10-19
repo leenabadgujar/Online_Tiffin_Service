@@ -1,0 +1,32 @@
+{% extends "customuser/base.html"%}
+    {% load static %}
+    {% block style %}
+        <link rel="stylesheet" href="{% static 'css/home.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    {% endblock style %}
+
+    {% block content %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <div id="message" class="message">
+                <h6 id="message_text" class="w-100 mb-0 text_{{message.tags}}">{{message}}</h6>
+                <div id="underline" class="underline bg_{{message.tags}}"></div>
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <div class="global-container">
+        <div class="card login-form">
+        <div class="card-body">
+            <h3 class="card-title text-center">We have sent an email to you </h3>
+            <div class="card-text text-center">
+                Please check your mail
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+    {% endblock %}

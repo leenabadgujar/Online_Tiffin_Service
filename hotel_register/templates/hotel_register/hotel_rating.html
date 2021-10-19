@@ -1,0 +1,42 @@
+{% extends "food/base.html" %}
+{% load static %}
+{% load check %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/hotel_detail.css' %}">
+{% endblock style %}
+
+{% block content %}
+<div class="container px-0 mt-4 py-5 pb-1">
+    <div class="mx-0">
+        <div class="row">
+            <div class="col">
+                <h3 class="fw-bold my-3">Reviews</h3>
+                {% if hotel_ratings|length %}
+                {% for hotel_rating in hotel_ratings %}
+                <div class="border rounded mb-4">
+                    <div class="p-3 text-dark under_border">
+                        <h5 class="text-capitalize d-inline-block  mb-2">Customer Name :- {{hotel_rating.user.name}}
+                        </h5>
+                        <h6 class="text_orange mt-2 mb-1" style="font-size: 19px;">Hotel Rating :- {{hotel_rating.rating}} <span class="mx-1">Star ({{hotel_rating.hotel.name}})</span></h6>
+                        <p class="text_grey mb-0" style="text-align: justify; font-size: 18px;">Customer Review :-
+                            {{hotel_rating.review}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <h4 class="fw-bold text-danger">No Review Yet, Be the first to review</h4>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block customscript %}
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="{% static 'js/base.js' }"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock customscript %}

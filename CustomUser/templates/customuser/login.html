@@ -12,7 +12,7 @@
     <!-- <link rel="stylesheet" href="css/form.css"> -->
     <link rel="stylesheet" href="{% static 'css/login.css' %}">
 
-    <title>Registration Page</title>
+    <title>Sign In</title>
 
     <!--Fonts for button from fontsawesome-->
     <!-- Font-Awesome CDN -->
@@ -30,9 +30,18 @@
 <body>
     {% if messages %}
         {% for message in messages %}
-            <p class="{{message.tags}} alert fw-bold w-100 py-2" role="alert">{{message}}</p>
+            <div id="message" class="message">
+                <h6 id="message_text" class="w-100 mb-0 text_{{message.tags}}">{{message}}</h6>
+                <div id="underline" class="underline bg_{{message.tags}}"></div>
+            </div>
         {% endfor %}
     {% endif %}
+
+    <div id="message" class="message d-none">
+        <h6 id="message_text" class="w-100 mb-0">message</h6>
+        <div id="underline" class="underline"></div>
+    </div>
+
     <div class="container-fluid mx-lg-0" style="padding: 0 35px;">
         <div class="row justify-content-center">
             <div class="col-xl-10 col-lg-12 col-md-9 px-0">
@@ -47,6 +56,15 @@
                                 <div class="text-center mt-5 pt-5">
                                     <h1 class="h2 judul pb-3 text-bold">Sign In</h1>
                                 </div>
+
+                                <!-- {% if messages %}
+                                    {% for message in messages %}
+                                        <div class="alert alert-info">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}      
+                                {% endif %} -->
+
                                 <form method="POST" class="mt-5" name="myForm">
                                     {% csrf_token %}
                                     {% for fm in form %}
@@ -56,7 +74,7 @@
                                             </div>
                                         </div>
                                     {% endfor %}
-                                    <button type="submit" class="btn mt-5 button block rounded-pill shadow">
+                                    <button disabled id="register" type="submit" class="btn mt-5 button block rounded-pill shadow">
                                     SIGN IN</button>
 
                                     <center class="mt-2">
@@ -94,9 +112,9 @@
             </div>
         </div>
     </div>
-    <!-- Option 1: Bootstrap Bundle with Popper -->
+    
     <script src="bs5/dist/js/bootstrap.bundle.js"></script>
-
+    <script src="{% static 'js/login.js' %}"></script>
 </body>
 
 </html>

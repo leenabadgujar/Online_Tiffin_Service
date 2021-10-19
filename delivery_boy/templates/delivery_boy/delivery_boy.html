@@ -1,0 +1,153 @@
+{% extends "food/base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/delivery_boy.css' %}">
+{% endblock style %}
+
+{% block content %}
+
+<div class="bhead">
+    <center>
+        <h2 class="boy_heading boy_padding">Ride with us</h2>
+    </center>
+</div>    
+
+<div class="boy">
+    <form method="POST" class="py-4" novalidate>
+        {% csrf_token %}
+        <h5 class="boy_heading boy_padding">Personal Information</h5>
+        <hr>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Name :- </label>
+                <input class="input" value={{request.user.name}} disabled id="name" type="text">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Email :- </label>
+                <input class="input" value={{request.user.email}} disabled id="email" type="text">
+            </div>
+        </div>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Mobile Number :- </label>
+                <input class="input" id="number" value={{request.user.number}} disabled type="number">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Date of Birth :- </label>
+                <input class="input" name="date" id="date" type="date"> 
+            </div>
+        </div>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Gender :- </label>
+                <select name="gender" id="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+        </div>
+        <h5 class="boy_heading boy_padding mt-5">Physical Address</h5>
+        <hr>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Country :- </label>
+                <input class="input" value="India" type="text" disabled>
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">City :- </label>
+                <input class="input" id="city" name="city" type="text">
+            </div>
+        </div>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Address :- </label>
+                <input class="input" id="address" name="address" type="text">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Postel Code :- </label>
+                <input class="input" id="code" name="code" type="number">
+            </div>
+        </div>
+        <h5 class="boy_heading boy_padding mt-5">Additional Information</h5>
+        <hr>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Do you have any experience in the food delivery service ?</label>
+                <div class="d-block radio_button my-2">
+                    <input type="radio" value="Yes" name="experience" id="experience1">
+                    <label for="experience1">Yes</label>
+                </div>
+                <div class="d-block radio_button my-2">
+                    <input type="radio" value="No" name="experience" id="experience2">
+                    <label for="experience2">No</label>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Do you have a driving license ?</label>
+                <div class="d-block radio_button my-2">
+                    <input type="radio" value="Yes" name="license" id="license1">
+                    <label for="license1">Yes</label>
+                </div>
+                <div class="d-block radio_button my-2">
+                    <input type="radio" value="No" name="license" id="license2">
+                    <label for="license2">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Working Hours</label>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="" class="label">From :- </label>
+                        <input class="input" name="from" id="from" min="1" type="time">
+                    </div>
+                    <div class="col-6">
+                        <label for="" class="label">To :- </label>
+                        <input class="input" name="to" id="to" min="1" type="time">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Would you like to work on weekends ?</label>
+                <div class="d-block radio_button my-2">
+                    <input type="radio" value="Yes" name="work" id="work1">
+                    <label for="work1">Yes</label>
+                </div>
+                <div class="d-block radio_button my-2">
+                    <input type="radio" value="No" name="work" id="work2">
+                    <label for="work2">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">How much money do you charge per kilometer ?</label><br>
+                <input class="input" id="money" name="money" min="1" type="number">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Enter the area/range till where you can cover for delivery of food.
+                    (Km)</label>
+                <input class="input" id="range" name="range" min="0.5" type="number">
+            </div>
+        </div>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Type of vehicle ?</label>
+                <select name="vehicle" id="vehicle">
+                    <option value="Bike">Bike</option>
+                    <option value="Bicycle">Bicycle</option>
+                </select>
+            </div>
+        </div>
+        <center>
+            <button class="mx-4 button my-3" disabled id="submit">Submit</button>
+        </center>
+    </form>
+</div>
+
+{% endblock content %}
+{% block customscript %}
+<script src="{% static 'js/delivery_boy.js' %}"></script>
+{% endblock customscript %}

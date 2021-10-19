@@ -1,0 +1,175 @@
+{% extends "food/base.html" %}
+{% load static %}
+{% load check %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/hotel_detail.css' %}">
+{% endblock style %}
+
+{% block content %}
+<div class="px-0  pb-5 py-5">
+    <!-- <header class="w-100">
+        <img src = "{% static 'images/delivery_boy1.jpg' %}" alt="Delivery Image" class="w-100" style="height: 70vh; ">
+    </header> -->
+    <div class="container mt-5">
+        {% if delivery_boys %}
+        <h1 class="text-center">Book Your Delivery Boy</h1>
+        {% for delivery_boy in delivery_boys %}
+        <div class="row g-0 single-menu">
+            <div class="col-12">
+                <div class="card-body">
+                    <h4 class="card-title fw-bold">{{delivery_boy.customer.name}}<span class="price"><i
+                                class="fas fa-rupee-sign fs-6"></i> {{delivery_boy.money}}</span></h4>
+                    <div class="d-flex">
+                        <p class="card-text">Working From : {{delivery_boy.working_form}}</p>
+                        <p class="card-text mx-4">Working Till : {{delivery_boy.working_to}}</p>
+                        <p class="card-text">Vehicle Used : {{delivery_boy.vehicle}}</p>
+                    </div>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="w-75 d-flex">
+                            <div class="w-50">
+                                <label class="mt-2" for="pick_up_address">Pickup Address :-</label><br>
+                                <textarea required name="pick_up_address" class="w-100 text_area" rows="2"></textarea>
+                            </div>
+                            <div class="w-50 px-3">
+                                <label class="mt-2" for="delivery_address">Delivary Address :-</label><br>
+                                <textarea required name="delivery_address" class="w-100 text_area" rows="2"></textarea>
+                            </div>
+                        </div>
+                        <h6 class="text-secondary mb-3 mt-2">Set Start date, End date and Delivery Time.</h6>
+                        <div class="d-flex justify-content-between flex-wrap mb-3">
+                            <div class="d-flex justify-content-between flex-wrap w-100">
+                                <div>
+                                    <h6 class="text-center">Start</h6>
+                                    <input type="date" name="start" id="" class="delivery_input">
+                                </div>
+                                <div class="mx-5">
+                                    <h6 class="text-center">End </h6>
+                                    <input type="date" name="end" id="" class="delivery_input">
+                                </div>
+                                <div>
+                                    <h6 class="text-center">Delivery Time</h6>
+                                    <input required name="delivery_time" type="time" class="delivery_input">
+                                </div>
+                                <input type="text" hidden value={{delivery_boy.id}} name="delivery_boy">
+                                <div class="py-3">
+                                    <button type="submit" class="butt-add">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% else %}
+
+
+        <div class="container-fluid mx-lg-0">
+            <div class="row justify-content-center">
+                <div class="col-xl-10 col-lg-12 col-md-9 px-0">
+                    <div class="card o-hidden shadow-lg">
+                        <div class="card-body p-0">
+                            <div class="row mx-0">
+                                <div class="col-lg-7 pb-4 position-relative">
+                                    <div class="mb-3">
+                                        <div class="mt-5">
+                                            <h1 class="text-center h2 judul pb-3 text-bold">Booked Delivery Boy Details
+                                            </h1>
+                                        </div>
+
+
+                                    </div>
+                                    <h4 class="text-center"></h4>
+                                    <h5 class="text-center">Name:- {{applications.delivery_boy.customer.name}}</h5>
+                                    <div class="d-flex justify-content-between flex-wrap p-3 pb-4">
+                                        <div>
+                                            <h6 class="text-center">Start Date</h6>
+                                            <h6 class="text-center">{{applications.delivery_start}}</h6>
+                                        </div>
+                                        <div class="mx-5">
+                                            <h6 class="text-center">End Date</h6>
+                                            <h6 class="text-center">{{applications.delivery_end}}</h6>
+                                        </div>
+                                        <div>
+                                            <h6 class="text-center">Delivery Time</h6>
+                                            <h6 class="text-center">{{applications.delivery_time}}</h6>
+                                        </div>
+                                    </div>
+
+
+
+                                    <h6 class="text-center p-1">Contact Information:-
+                                        {{applications.delivery_boy.customer.number}}</h6>
+                                    <h6 class="text-center p-1">Vehicle Used for Delivery:-
+                                        {{applications.delivery_boy.vehicle}}</h6>
+                                    <h6 class="text-center p-1">Per day Cost:- {{applications.delivery_boy.money}}</h6>
+                                    <input type="text" hidden value={{applications.id}} name="delivery_boy">
+                                    <p class="text-center">Total Amount:- <i
+                                            class="fas fa-rupee-sign"></i>{{total_amount}}</p>
+                                    {% if show %}
+                                    <div class="text-center my-3">
+                                        <a href="?action=create_payment" type="submit"
+                                            class="button mx-auto">Payment</a>
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+
+                                <!-- cover -->
+                                <div class="col-lg-5 d-none d-lg-block position-relative px-0">
+                                    <img src="{% static 'images/delivery_boy2.jpg' %}" class="cover"
+                                        style="border: 1px solid rgb(221, 218, 218);">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        <div class="mx-0">
+            <div class="my-3">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+{% block customscript %}
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="{% static 'js/base.js' }"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+{% if order is not None %}
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+    var options = {
+        "key": "rzp_test_0zMZSOuRyCELpK", // Enter the Key ID generated from the Dashboard
+        "name": "Online Tiffin Services",
+        "description": "Payment for Delivery Boy",
+        "image": "https://i.pinimg.com/originals/df/68/d1/df68d15c4dd26b04df39cd2b1c203ed6.jpg",
+        "order_id": "{{order.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "callback_url": "http://localhost:8000/delivery_boy/verify_payment/",
+        "prefill": {
+            "name": "{{request.user.name}}",
+            "email": "{{request.user.email}}",
+            "contact": "{{request.user.number}}"
+        },
+        "theme": {
+            "color": "#FFA500"
+        }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.open();
+</script>
+
+{% endif %}
+
+{% endblock customscript %}

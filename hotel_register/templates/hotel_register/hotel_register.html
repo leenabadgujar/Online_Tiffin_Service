@@ -1,0 +1,167 @@
+{% extends "food/base.html" %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/hotel_register.css' %}">
+{% endblock style %}
+
+{% block content %}
+
+<div class="bhead">
+    <center>
+        <h2 class="boy_heading boy_padding">Serve with us</h2>
+    </center>
+</div>    
+
+<div class="boy">
+    <form method="POST" class="py-4" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <!-- =========Personal Information========== -->
+        <h5 class="boy_heading boy_padding">Personal Information</h5>
+        <hr>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Owner Name :- </label>
+                <input class="input" value={{request.user.name}} disabled id="owner_name" type="text">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Owner Contact Number :- </label>
+                <input class="input" id="number" value={{request.user.number}} disabled type="number">
+            </div>
+        </div>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Owner Email Id:- </label>
+                <input class="input" value={{request.user.email}} disabled id="email" type="text">
+            </div>
+        </div>
+
+
+        <!-- =========physical address========== -->
+        <h5 class="boy_heading boy_padding mt-5">Address Information</h5>
+        <hr>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Address :- </label>
+                <input class="input" id="address" name="address" type="text">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Restaurant City :- </label>
+                <input class="input" id="city" name="city" type="text">
+            </div>
+        </div>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Restaurant Country :- </label>
+                <input class="input" value="India" type="text" disabled>
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Postel Code :- </label>
+                <input class="input" id="code" name="code" type="number">
+            </div>
+        </div> 
+
+        <!-- =========Personal Information========== -->
+        <h5 class="boy_heading boy_padding mt-5">Additional Information</h5>
+        <hr>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Restaurant Name :- </label>
+                <input class="input" id="name" type="text">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Type of cuisine :- </label>
+                <input class="input" id="cuisine" name="cuisine" type="text">
+            </div>
+        </div>
+
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Cost for two :- </label>
+                <input class="input" id="cost" name="cost" type="number">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Serving hours :- </label>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="" class="label">From :- </label>
+                        <input class="input" name="from" id="from" min="1" type="time">
+                    </div>
+                    <div class="col-6">
+                        <label for="" class="label">To :- </label>
+                        <input class="input" name="till" id="till" min="1" type="time">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Do you currently support delivery ?</label>
+                <div class="d-block radio_button my-2">
+                    <input type="radio" value="Yes" name="delivery" id="delivery1">
+                    <label for="delivery1">Yes</label>
+                </div>
+                <div class="d-block radio_button my-2">
+                    <input type="radio" value="No" name="delivery" id="delivery2">
+                    <label for="delivery2">No</label>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Is this in a mall or a building complex ?</label>
+                <input class="input" id="loc" name="loc" type="text">
+            </div>
+        </div>
+        
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Opening status :-</label>
+                <div class="d-block radio_button my-2">
+                    <input type="radio" value="already open" name="open_status" id="open_status1">
+                    <label for="open_status1">This place is already open.</label>
+                </div>
+                <div class="d-block radio_button my-2">
+                    <input type="radio" value="opening soon." name="open_status" id="open_status2">
+                    <label for="open_status2">This place is opening soon.</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- =========Pictures========== -->
+        <h5 class="boy_heading boy_padding mt-5">Restaurant Picture</h5>
+        <hr>
+
+        <div class="row boy_padding mb-3 mt-4">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="img1" class="label choose_img">
+                    <div class="inner_choose_img">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p class="text-center">Upload Image or Video of your Restaurant</p>
+                    </div>
+                    <img id="choose_img1" class="d-none" src="{% static 'images/1.jpg' %}" alt="">
+                </label>
+                <input type="file" id="img1" class="d-none" name="img1">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="img2" class="label choose_img">
+                    <div class="inner_choose_img">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p class="text-center">Upload Image or Video Restaurant Locality</p>
+                    </div>
+                    <img id="choose_img2" class="d-none" alt="">
+                </label>
+                <input type="file" id="img2" class="d-none" name="img2">
+            </div>
+        </div>  
+        
+        <!-- =========Submit========== -->
+        <center>
+            <button class="mx-4 button my-3" disabled id="submit">Submit</button>
+        </center>
+    </form>
+</div>
+
+{% endblock content %}
+{% block customscript %}
+<script src="{% static 'js/hotel_register.js' %}"></script>
+{% endblock customscript %}

@@ -2,26 +2,35 @@ from django import forms
 from .models import CustomUser
 from django.contrib.auth.forms import UserCreationForm, authenticate, UserChangeForm
 
+
 class Registration(UserCreationForm):
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={"class":'form-login placeicon',"placeholder":'Enter Password'}))
-    password2 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={"class":'form-login placeicon',"placeholder":'Re-enter Password'}))
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(
+        attrs={"class": 'form-login placeicon', "placeholder": 'Enter Password'}))
+    password2 = forms.CharField(label='Password', widget=forms.PasswordInput(
+        attrs={"class": 'form-login placeicon', "placeholder": 'Re-enter Password'}))
+
     class Meta:
         model = CustomUser
-        fields = ('name','email', 'number','password1','password2') 
+        fields = ('name', 'email', 'number', 'city',
+                  'password1', 'password2')
         widgets = {
-            'name' : forms.TextInput(attrs={'class':'form-login placeicon',"placeholder":'Enter your name'}),
-            'email' : forms.EmailInput(attrs={'class':'form-login placeicon',"placeholder":'Enter your email'}),
-            'number' : forms.NumberInput(attrs={'class':'form-login placeicon',"placeholder":'Enter your number'}),
-        } 
+            'name': forms.TextInput(attrs={'class': 'form-login placeicon', "placeholder": 'Enter your name'}),
+            'email': forms.EmailInput(attrs={'class': 'form-login placeicon', "placeholder": 'Enter your email'}),
+            'number': forms.NumberInput(attrs={'class': 'form-login placeicon', "placeholder": 'Enter your number'}),
+            'city': forms.TextInput(attrs={'class': 'form-login placeicon', "placeholder": 'Enter your City'}),
+        }
+
 
 class Login(forms.ModelForm):
-    password = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={"class":'form-login placeicon',"placeholder":'Enter Password'}))
+    password = forms.CharField(label='Password', widget=forms.PasswordInput(
+        attrs={"class": 'form-login placeicon', "placeholder": 'Enter Password'}))
+
     class Meta:
         model = CustomUser
-        fields = ('email','password') 
+        fields = ('email', 'password')
         widgets = {
-            'email' : forms.TextInput(attrs={'class':'form-login placeicon',"placeholder":'Enter your email'})
-        }   
+            'email': forms.TextInput(attrs={'class': 'form-login placeicon', "placeholder": 'Enter your email'})
+        }
 
     def clean(self):
         email = self.cleaned_data['email']

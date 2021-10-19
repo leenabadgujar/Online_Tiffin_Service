@@ -1,0 +1,54 @@
+{% extends "food/base.html" %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/add_hotel.css' %}">
+{% endblock style %}
+
+{% block content %}
+
+<div class="bhead">
+    <center>
+        <h2 class="boy_heading boy_padding">Serve with us</h2>
+    </center>
+</div>    
+
+<div class="boy">
+    <form method="POST" class="py-4" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ image_form.management_form }}
+
+        <!-- =========physical address========== -->
+        <h5 class="boy_heading boy_padding">Menu Details</h5>
+        <hr>
+        <div class="row boy_padding mb-3">
+            {% for field in form %}
+                <div id={{field.name}} class="col-12 col-md-6 pb-3" >
+                    <label for="address" class="label">{{field.label}} :- </label>
+                    {{field}}
+                </div>
+            {% endfor %}
+        </div>
+        
+
+        <h5 class="boy_heading boy_padding mt-5">Addition Menu Pictures</h5>
+        <hr>  
+        <div class="mx-4 field px-2">
+            {% for field in image_form %}
+                <div class="d-flex flex-wrap align-items-center py-3 id_{{field.name}}">
+                    <label for=id_{{field.name}} class=id_{{field.name}}>{{field.label_tag|striptags}}- </label>{{field}}
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- =========Submit========== -->
+        <center>
+            <button class="mx-4 button my-3" id="submit">Submit</button>
+        </center>
+    </form>
+</div>
+
+{% endblock content %}
+{% block customscript %}
+<script src="{% static 'js/hotel_register.js' %}"></script>
+{% endblock customscript %}

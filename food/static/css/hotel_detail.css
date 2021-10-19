@@ -1,0 +1,201 @@
+.product {
+  height: 50vh;
+}
+.product .product_images_inner {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  height: 70vh;
+  scroll-behavior: smooth;
+}
+.small_images {
+  width: 100%;
+  height: 23.5vh;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.product .product_images .up_down_button {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+.product .product_images .up_down_button button {
+  border: none;
+  padding: 10px 13px;
+  outline: none;
+  border-radius: 50%;
+  background-color: lightgray;
+}
+.product .product_images .product_images_inner::-webkit-scrollbar {
+  width: 0;
+}
+.product .product_images img {
+  width: 90px;
+  padding-bottom: 20px;
+}
+.product .product_image {
+  padding-right: 10px;
+}
+.product .product_image > img {
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+}
+.hotel_city {
+  color: rgb(184, 184, 184);
+}
+.hotel_time {
+  color: red;
+}
+.product_info {
+  height: inherit;
+}
+.product .button {
+  border-radius: 0;
+  font-size: 19px;
+  width: 50%;
+  text-align: center;
+  margin-right: 10px;
+}
+.button:hover {
+  color: white;
+}
+.under_border {
+  position: relative;
+}
+.under_border::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: lightgray;
+}
+.under_border:last-child:after {
+  height: 0;
+}
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  padding: 5px 0;
+}
+#rating {
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  padding: 0 10px;
+  width: 50px;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+textarea {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 18px;
+  width: 100%;
+  outline: none;
+}
+.button {
+  padding: 10px 50px;
+}
+label {
+  color: orange;
+  font-size: 18px;
+}
+.buttons {
+  background: orange;
+  padding: 5px 40px;
+  color: white;
+  border: none;
+  outline: none;
+  font-weight: bolder;
+  margin-left: 20px;
+}
+.price {
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bolder;
+}
+.food {
+  width: 100%;
+}
+.single-menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.single-menu:hover img {
+  border-radius: 0;
+}
+.single-menu img {
+  margin-right: 30px;
+  border: 1px solid #ddd;
+  padding: 3px;
+  max-height: 180px;
+  object-fit: cover;
+  transition: 0.5s;
+}
+.single-menu h4 {
+  text-transform: capitalize;
+  font-size: 22px;
+  border-bottom: 1px dashed #333;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+.single-menu h4 span {
+  float: right;
+  color: #ff7720;
+}
+.single-menu {
+  flex-basis: 580px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #ddd;
+}
+
+@media screen and (max-width: 768px) {
+  .food {
+    width: 35%;
+  }
+}
+
+.butt-add {
+  border-radius: 5px;
+  float: right;
+  background-color: white;
+  border: 1px solid orange;
+  padding: 5px 35px;
+}
+
+.butt-add:hover {
+  border-radius: 5px;
+  color: white;
+  background-color: orange;
+}
+
+.text_hover_black:hover {
+  color: black;
+}
+
+.delivery_input {
+  background: transparent;
+  border: 1px solid rgb(175, 174, 174);
+  padding: 5px 10px;
+}
+
+.judul {
+  color: orange;
+}
+.text_area {
+  border: 1px solid black;
+  border-radius: 0;
+}

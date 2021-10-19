@@ -1,0 +1,236 @@
+{% extends "food/base.html" %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/landing_page.css' %}">
+{% endblock style %}
+
+{% block content %}
+    <div class="pb-5 pt-2">
+        <!--========== Title ==========-->
+        <section class="title">
+            <img src="{% static 'images/slider-img-3.jpg' %}" alt="title image" class="parallax">
+            <div class="text-wrapper">
+                <h3 class="headline-about">Online Tiffin Service</h3>
+                <h1 class="headline">Register your business with US</h1>
+                <div class="headline-description">
+                    <div class="seperator">
+                        <div class="line line-left"></div>
+                        <div class="asterisk"><i class="fa fa-asterisk" aria-hidden="true"></i></div>
+                        <div class="line line-right"></div>
+                    </div>
+                </div>
+                <!--<h2 class="subheadline">Welcome to home of food.</h2>-->
+                <h5 class="headline-below">For free and get more customers!</h5>
+                <a href="{% url 'delivery_boy_from' %}" class = "btn btn-lg btn-outline-light download-button"><i class="fas fa-utensils"></i>  Register for Delivery boy</a>
+                <a href="{% url 'hotel_register_form' %}" class = "btn btn-lg btn-outline-light download-button"><i class="fas fa-biking"></i>  Register your Restaurant</a>
+            </div>
+        </section>
+
+        <!--====================How we work========================-->
+        <section class="work-img">
+        <div>
+            <img alt="section-bg" src="https://b.zmtcdn.com/merchant-onboarding/f57794be6408563354c463c702ab45b91600672364.png" >
+        </div>
+        </section>
+
+        <section class="bd-container work">
+        <div class="container">
+            <div class="section-title-testi testi-font">
+                <h2 class = "testi-family section-color">How it Works ?</h2>
+            </div>
+        
+            <div class="row ">
+                <div class="col-12 col-md-4 pb-5">
+                <div class="card h-100">
+                    <img src="https://image.flaticon.com/icons/png/512/5391/5391746.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <center>
+                        <h5 class="card-title">Step 1</h5>
+                        <p class="card-text1">Sign Up for Online Food Services.</p>
+                        <h6 class="card-text2">Create your own profile by registering in our page.</h6>
+                    </center>
+                    </div>
+                </div>
+                </div>
+
+                <div class="col-12 col-md-4  pb-5">
+                <div class="card h-100">
+                    <img src="https://image.flaticon.com/icons/png/512/2830/2830312.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <center>
+                        <h5 class="card-title">Step 2</h5>
+                        <p class="card-text1">Register for online ordering</p>
+                        <h6 class="card-text2">For delivering orders to users around your area.</h6>
+                    </center>  
+                    </div>
+                </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                <div class="card h-100">
+                    <img src="https://image.flaticon.com/icons/png/512/2558/2558190.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <center>
+                        <h5 class="card-title">Step 3</h5>
+                        <p class="card-text1">Start receiving your orders</p>
+                        <h6 class="card-text2">Manage your orders and daily menu update through web.</h6>
+                    </center>  
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </section>
+
+        <!--========== Testimonials ==========-->
+        <section class= "my-5" id="testimonials">
+            <div class="container">
+                <div class="section-title-testi testi-font">
+                    <h2 class = "testi-family section-color">Reviews</h2>
+                    <!--<span class="section-separator"></span>-->
+                    <center>
+                        <p>Customer feedback over services.</p>
+                    </center>
+                </div>
+            </div>
+            <div class="testimonials-carousel-wrap">
+                <div class="testimonials-carousel">
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            {% for review in reviews %}
+                            <div class="swiper-slide">
+                                <div class="testi-item">
+                                    <div class="testi-avatar"><img src="{% static 'images/6.jpg' %}"></div>
+                                    <div class="testimonials-text-before">
+                                        <i class="fa fa-quote-right"></i>
+                                    </div>
+                                    <div class="testimonials-text testi-font">
+                                        <h5>{{review.review}}</h5>
+                                        <p>Hotel Name :- {{review.hotel.name}}</p>
+                                        <div class="testimonials-avatar">
+                                            <h3>{{review.user.name}}</h3>
+                                        </div>
+                                    </div>
+                                    <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div> 
+                                </div>
+                            </div>
+                            {% endfor%}
+                        </div>
+                    </div>
+                </div>
+
+                <center>
+                    <div class="tc-pagination"></div>
+                </center>
+                
+            </div>
+        </section>
+
+        <!--========== CONTACT US ==========-->
+        <section class="contact section color-container" id="contact">
+        <div class="bd-container">
+            <div class="contact__container ">
+                <div class="contact__data">
+                    <center>
+                    <h2 class="section-title contact__initial service-content section-color">Start your Journey with Us</h2>
+                    <p class="contact__description service-content">Register your buisness with Us And Ride with Us for online food services.</p>
+                    <a href="{% url 'delivery_boy_from' %}" class = "btn btn-lg btn-outline-light download-button"><i class="fas fa-utensils"></i>  Register for Delivery boy</a>
+                    <a href="{% url 'hotel_register_form' %}" class = "btn btn-lg btn-outline-light download-button"><i class="fas fa-biking"></i>  Register your Restaurant</a>
+                    </center>
+                </div>
+            </div>
+        </div> 
+        </section>
+        
+        <!--====================FAQ section========================-->
+        <section class="faq-section bd-container">
+            <div class="container">
+                <div class="section-title-testi testi-font">
+                    <h2 class = "testi-family section-color">Help & Support</h2>
+                    <center>
+                        <p>Let's take a step ahead and help you better.</p>
+                    </center>
+                </div>
+            </div>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        What will be the charges for registering on your platform?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <strong>
+                        <p>
+                            Creating a restaurant page or registering for delivery boy is free of cost. You can maintain your page by replying to reviews and do a lot more without any charges.
+                        </p>
+                    </div>
+                </div>
+                </div>
+
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        What information is required for registering your hotel?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                    <strong>
+                    <p>
+                        Registration for online ordering requires: <br>
+                        <ol style="margin-bottom: 0px">
+                            <li>Image of your kitchen, where food is cooked.</li>
+                            <li>Image of your locality, where your hotel is located.</li>
+                        </ol>
+                    </p>
+                    </div>
+                </div>
+                </div>
+
+                <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Can we use our delivery boys for delivering food?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                    <strong>
+                    <p>
+                        Yes, you can use your delivery boys for delivering food. If not we also have a facility for delivery food with our registered delivery boys.
+                    </p>
+                    </div>
+                </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        After I submit all documents, how long will it take for my hotel to go live on your platform?
+                    </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                    <strong>
+                        <p>
+                            After all mandatory documents have been recieved and verified, it will take upto 4-5 working days to know the status and onboarding of hotel.
+                        </p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock content %}
+
+{% block customscript %}
+<script src="https://unpkg.com/scrollreveal"></script>
+    <script src="{% static 'js/base.js' }"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock customscript %}

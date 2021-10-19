@@ -1,136 +1,188 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--========== BOX ICONS ==========-->
-        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--========== CSS ==========-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--========== BOX ICONS ==========-->
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
-        {% block style %}{% endblock style %}
+    <!--========== CSS ==========-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-        <title>
-            {% block title %} Online Tiffin Service {% endblock title %}
-        </title>
+    {% block style %}{% endblock style %}
 
-        <!--Fonts in code-->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Ubuntu&display=swap" rel="stylesheet">
-    
-        <!--Fonts for button from fontsawesome-->
-        <script src="https://kit.fontawesome.com/1c9ad4b785.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <title>
+        {% block title %} Online Tiffin Service {% endblock title %}
+    </title>
 
-    </head>
-    <body>
-        {% if messages %}
-            {% for message in messages %}
-                <p class="{{message.tags}} alert fw-bold w-100 py-2" role="alert">{{message}}</p>
-            {% endfor %}
-        {% endif %}
-        {% block navbar %}
-            <a href="#" class="scrolltop" id="scroll-top">
-                <i class='bx bx-chevron-up scrolltop__icon'></i>
-            </a>
+    <!--Fonts in code-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Ubuntu&display=swap"
+        rel="stylesheet">
 
-            <!--========== HEADER ==========-->
-            <header class="l-header" id="header">
-                <nav class="nav bd-container">
-                    <a href="#" class="nav__logo nav-logo">Tasty</a>
+    <!--Fonts for button from fontsawesome-->
+    <script src="https://kit.fontawesome.com/1c9ad4b785.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <script src="https://kit.fontawesome.com/9970e863a8.js" crossorigin="anonymous"></script>
 
-                    <div class="nav__menu" id="nav-menu">
-                        <ul class="nav__list mb-0 px-0">
-                            <li class="nav__item"><a href="#home" class="nav__link active-link ">Home</a></li>
-                            <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
-                            <li class="nav__item"><a href="#services" class="nav__link">Services</a></li>
-                            <li class="nav__item"><a href="#menu" class="nav__link">Menu</a></li>
-                            <li class="nav__item"><a href="#contact" class="nav__link">Contact us</a></li>
-                            {% if request.user.is_authenticated %}
-                                <li class="nav__item"><a href="Login Page 1/login.html" class="nav__link">Hello, {{request.user.name}}</a></li>
-                                <li class="nav__item"><a href="{% url 'logout' %}" class="nav__link">Logout</a></li>
-                            {% else %}                                
-                                <li class="nav__item"><a href="{% url 'registration' %}" class="nav__link">Register</a></li>
-                                <li class="nav__item"><a href="{% url 'login' %}" class="nav__link">Login</a></li>
-                            {% endif %}
-                        </ul>
+</head>
+
+<body>
+    {% if messages %}
+    {% for message in messages %}
+    <div id="message" class="message">
+        <h6 id="message_text" class="w-100 mb-0 text_{{message.tags}}">{{message}}</h6>
+        <div id="underline" class="underline bg_{{message.tags}}"></div>
+    </div>
+    {% endfor %}
+    {% endif %}
+
+
+    {% block navbar %}
+    <a href="#" class="scrolltop" id="scroll-top">
+        <i class='bx bx-chevron-up scrolltop__icon'></i>
+    </a>
+
+    <!--========== HEADER ==========-->
+    <header class="l-header" id="header">
+        <nav class="nav bd-container">
+            <a href="#" class="nav__logo nav-logo">Tasty</a>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list mb-0 px-0">
+                    <li class="nav__item"><a href="{% url 'home' %}" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="{% url 'about' %}" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="{% url 'my_cart' %}" class="nav__link">Cart</a></li>
+                    <li class="nav__item"><a href="{% url 'order' %}" class="nav__link">Order</a></li>
+                    <li class="nav__item"><a href="{% url 'join_us' %}" class="nav__link">Join us</a></li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav__item"><a href="{% url 'logout' %}" class="nav__link">Logout</a></li>
+                    {% else %}
+                    <li class="nav__item"><a href="{% url 'registration' %}" class="nav__link">Register</a></li>
+                    <li class="nav__item"><a href="{% url 'login' %}" class="nav__link">Login</a></li>
+                    {% endif %}
+                    <li class="nav__item search_icon cursor_pointer" id="search_button">
+                        <i class="fas fa-search search_button"></i>
+                    </li>
+                    <div class="search display_none">
+                        <form class="w-100" action="/search" method="get">
+                            <input type="search" class="mx-0" name="search" placeholder="Search">
+                            <button>
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
                     </div>
+                    <!-- <form action="/search" method="GET">
+                        <input type="text" name="search">
+                        <button>Search</button>
+                    </form> -->
+                </ul>
+            </div>
 
-                    <div class="nav__toggle" id="nav-toggle">
-                        <i class='bx bx-menu'></i>
-                    </div>
-                </nav>
-            </header>
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
 
-        {% endblock navbar %}
+    {% endblock navbar %}
 
-        {% block content %}{% endblock content %}
+    {% block content %}{% endblock content %}
 
-        {% block footer %}
-            <!--========== FOOTER ==========-->
-            <footer class="footer mt-5 pt-3 bd-container">
-                <div class="footer__container bd-grid">
-                    <div class="footer__content">
-                        <a href="#" class="footer__logo">Tasty Food</a>
-                        <div class="mt-3">
-                            <a href="#" class="footer__social section-color"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#" class="footer__social section-color"><i class="fab fa-instagram footer-icon"></i></a>
-                            <a href="#" class="footer__social section-color"><i class="fab fa-twitter footer-icon"></i></a>
-                            <a href="#" class="footer__social section-color"><i class="fas fa-envelope footer-icon"></i></a>     
-                        </div>
-                    </div>
-
-                    <div class="footer__content">
-                        <h3 class="footer__title section-color">Services</h3>
-                        <ul class="px-0">
-                            <li><a href="#" class="footer__link section-color">Delivery</a></li>
-                            <li><a href="#" class="footer__link section-color">Pricing</a></li>
-                            <li><a href="#" class="footer__link section-color">Fast food</a></li>
-                            <li><a href="#" class="footer__link section-color">Reserve your spot</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__content">
-                        <h3 class="footer__title section-color">Information</h3>
-                        <ul class="px-0">
-                            <li><a href="#" class="footer__link section-color">Event</a></li>
-                            <li><a href="#" class="footer__link section-color">Contact us</a></li>
-                            <li><a href="#" class="footer__link section-color">Privacy policy</a></li>
-                            <li><a href="#" class="footer__link section-color">Terms of services</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="footer__content">
-                        <h3 class="footer__title section-color">Address</h3>
-                        <p class="address">
-                            Bhavans Campus, Munshi Nagar, Andheri (West)
-                            <br>
-                            llp@gmail.com
-                        </p>
-                    </div>
+    {% block footer %}
+    <!--========== FOOTER ==========-->
+    <footer class="footer for_form">
+        <div class="footer__container bd-grid zero_grid">
+            <div class="footer__content">
+                <a href="#" class="footer__logo footer-section-color">Tasty Food</a>
+                <div class="mt-3">
+                    <a href="#" class="footer__social footer-section-color"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="footer__social footer-section-color"><i
+                            class="fab fa-instagram footer-icon"></i></a>
+                    <a href="#" class="footer__social footer-section-color"><i
+                            class="fab fa-twitter footer-icon"></i></a>
+                    <a href="mailto: onlineTiffinService.ots@gmail.com" class="footer__social footer-section-color"><i
+                            class="fas fa-envelope footer-icon"></i></a>
                 </div>
-            </footer>
+            </div>
 
-            <footer class="footer__text">
-                <p class="my-0">&#169; 2021 All right reserved.</p>
-            </footer>
-        {% endblock footer %}
-    </body>
+            <div class="footer__content">
+                <h3 class="footer__title footer-section-color">Services</h3>
+                <ul class="px-0">
+                    <li><a href="{% url 'delivery_boy_from' %}" class="footer__link footer-section-color">Delivery</a>
+                    </li>
+                    <li><a href="{% url 'hotel_register_form' %}" class="footer__link footer-section-color">Pricing</a>
+                    </li>
+                    <li><a href="#" class="footer__link footer-section-color">Fast food</a></li>
+                    <li><a href="#" class="footer__link footer-section-color">Reserve your spot</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title footer-section-color">Information</h3>
+                <ul class="px-0">
+                    <li><a href="#" class="footer__link footer-section-color">Event</a></li>
+                    <li><a href="#" class="footer__link footer-section-color">Contact us</a></li>
+                    <li><a href="#" class="footer__link footer-section-color">Privacy policy</a></li>
+                    <li><a href="#" class="footer__link footer-section-color">Terms of services</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title footer-section-color">Address</h3>
+                <p class="address footer-section-color">
+                    Bhavans Campus, Munshi Nagar, Andheri (West)
+                    <br>
+                    onlineTiffinService.ots@gmail.com
+                </p>
+            </div>
+        </div>
+    </footer>
+    <hr class="m-0">
+    <footer class="footer__text">
+        <p class="my-0">&#169; 2021 All right reserved.</p>
+    </footer>
+    {% endblock footer %}
+</body>
 
 
-    {% block Prescript %}
-        <!--========== SCROLL REVEAL ==========-->
-        <script src="https://unpkg.com/scrollreveal"></script>
+{% block Prescript %}
+<!--========== SCROLL REVEAL ==========-->
+<script src="https://unpkg.com/scrollreveal"></script>
 
-        <!--========== MAIN JS ==========-->
-        <script src="{% static 'js/base.js' %}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    {% endblock Prescript %}
+<!--========== MAIN JS ==========-->
+<script src="{% static 'js/base.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+    integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+    crossorigin="anonymous"></script>
+{% endblock Prescript %}
 
-    {% block customscript %}{% endblock customscript %}
+<script>
+
+    let search_icon = document.querySelector(".search_icon");
+    let menu_icon = document.querySelector(".menu_icon");
+    let search = document.querySelector(".search");
+    let nav_items = document.querySelector(".nav_items");
+
+    search_icon.addEventListener("click", () => {
+        search.classList.toggle("display_none");
+    })
+
+    menu_icon.addEventListener("click", () => {
+        nav_items.classList.toggle("active");
+    })
+
+</script>
+{% block customscript %}{% endblock customscript %}
+
 </html>

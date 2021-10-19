@@ -26,23 +26,6 @@ navLink.forEach(n => n.addEventListener('click', linkAction))
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections = document.querySelectorAll('section[id]')
 
-function scrollActive(){
-    const scrollY = window.pageYOffset
-
-    sections.forEach(current =>{
-        const sectionHeight = current.offsetHeight
-        const sectionTop = current.offsetTop - 50;
-        sectionId = current.getAttribute('id')
-
-        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
-        }else{
-            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
-        }
-    })
-}
-window.addEventListener('scroll', scrollActive)
-
 /*==================== CHANGE BACKGROUND HEADER ====================*/ 
 function scrollHeader(){
     const nav = document.getElementById('header');
@@ -111,8 +94,8 @@ function initParadoxWay() {
     
     
     setInterval(function () {
-        var size = randomValue(sArray);
-        document.querySelectorAll('.bubbles').append('<div class="individual-bubble" style="left: ' + randomValue(bArray) + 'px; width: ' + size + 'px; height:' + size + 'px;"></div>');
+        // var size = randomValue();
+        document.querySelectorAll('.bubbles').append('<div class="individual-bubble" style="left: ' + 'px; width: '  + 'px; height:' + 'px;"></div>');
         document.getElementsByClassName('individual-bubble').animate({
             'bottom': '100%',
             'opacity': '-=0.7'
@@ -127,3 +110,19 @@ function initParadoxWay() {
 $(document).ready(function () {
     initParadoxWay();
 });
+
+var content = document.getElementById("content");
+var message = document.getElementById("message");
+
+const moveRight = () => {
+    message.classList.add("move_right");
+    setTimeout(() => {
+        message.classList.add("d-none");
+    }, 1000)
+}
+
+if (message) {
+    setTimeout(moveRight , 5000);
+};
+
+message.addEventListener("click", moveRight);

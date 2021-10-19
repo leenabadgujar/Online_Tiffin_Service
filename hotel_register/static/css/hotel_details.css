@@ -1,0 +1,208 @@
+.course_heading{
+    padding-right: 20px;
+}
+.instructor_image{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.course_image{
+    width: 100%;
+    height: 30vh;
+    background-color: white;
+    object-fit: fill;
+}
+.video_list{
+    position: relative;
+    padding-top: 18px;
+    padding-bottom: 13px;
+    transition: .5s ease background-color;
+}
+.video_list:hover{
+    background-color: white;
+    box-shadow: 0px 0px 10px lightgray;
+}
+.video_list::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: gray;
+}
+.video_list:last-child::after{
+    height: 0;
+}
+.body {
+  margin: 0;
+}
+.food {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 10px;
+  margin-left: 22px;
+}
+.status {
+  color: rgb(192, 189, 189);
+}
+
+.left {
+  padding: 0;
+}
+
+.button {
+  font-size: 18px;
+  padding: 8px 20px;
+  color: rgb(255, 185, 55);
+}
+
+.hotel-dashboard {
+  min-height: 100vh;
+  margin-top: 70px;
+}
+
+.h_100 {
+  min-height: 100vh;
+}
+.heading {
+  padding-top: 22px;
+}
+.message{
+    display: inline-block;
+    cursor: pointer;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background: white;
+    padding: 10px 30px 15px;
+    z-index: 100;
+    margin: 10px 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,.4);
+    transition: 2s ease all;
+}
+.move_right{
+    right: -2600px;
+}
+.underline{
+    position: absolute;
+    bottom: 0;
+    height: 4px;
+    width: 100%;
+    left: 0;
+}
+
+/* ******** header ********* */
+
+.text_orange{
+    color: orange;
+}
+.text_success{
+    color: chartreuse;
+}
+.text_red, .text_error{
+    color: red;
+}
+.text_info{
+    color: rgb(255, 238, 0);
+}
+.bg_error{
+    background-color: red;
+}
+.bg_success{
+    background-color: chartreuse;
+}
+.bg_info{
+    background-color: rgb(255, 238, 0);
+}
+.bg_orange{
+    background-color: rgb(255, 166, 0);
+    height:18%;
+}
+.bg_black{
+    background-color: black;
+}
+.bg_light_grey{
+    background-color: rgba(245, 245, 245, 0.993);
+    padding : 0;
+    
+}
+.bg_grey{
+    background-color: rgb(238, 238, 238);
+}
+.bg_white{
+    color: rgb(223, 217, 217);
+}
+.icons{
+    border: 1px solid white;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* ******** Navbar ********* */
+
+.nav_sticky{
+    position: sticky;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+.nav_brand>h3>a{
+    text-transform: capitalize;
+    font-family: 'Playball'!important;
+    font-weight: bold;
+    color: black;
+}
+.nav_content>ul{
+    list-style: none;
+}
+.nav_content>ul>a{
+    display: inline-block!important;
+}
+.nav_content>ul>a>li{
+    display: inline-block!important;    
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 10px;
+    cursor: pointer;
+    color: black;
+    position: relative;
+}
+.nav_content>ul>a>li::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -3px;
+    width: 0px;
+    height: 3px;
+    background-color: orange;
+    transform: translateX(-50%);
+    transition: .5s ease all;
+}
+.nav_content>ul>a>li:hover::after{
+    width: 100%;
+}
+.nav_content>ul>li>button{
+    background-color: orange;
+    color: white;
+    padding: 2px 30px;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+}
+.box_shadow{
+    -webkit-box-shadow: 0 8px 6px -6px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 8px 6px -6px rgba(0,0,0,.2);
+    box-shadow: 0 8px 6px -6px rgba(0,0,0,.2);
+}
+
+@media (max-width: 991px){
+    .toggle_content{
+        opacity: 0;
+        display: none;
+    }
+}

@@ -3,6 +3,7 @@
 {% block style %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 {% endblock style %}
 
 {% block content %}
@@ -17,7 +18,8 @@
                 <div class="container-fluid home__container bd-container bd-grid">
                     <div class="home__data">
                         <h2 class="home__subtitle">Try the best food of <br> the week.</h2>
-                        <a href="#menu" class="button"><i class="fas fa-list-ul"></i> View Menu</a>
+                        <a href="{% url 'all_hotel'%}" class="button mb-4"><i class="fas fa-list-ul"></i> View Hotels</a>
+                        <a href="{% url 'all_menu'%}" class="button"><i class="fas fa-list-ul"></i> View Menu</a>
                     </div>
     
                     <img src="{% static 'images/home.png' %}" alt="Dish Image" class="home__img">
@@ -30,14 +32,14 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
-                            <img src="{% static 'images/about.jpg' %}" alt="About us" class="about__img">
+                            <img src="{% static 'images/delivery_home.jpg' %}" alt="About us" class="about__img">
                         </div>
                         <div class="col-12 col-md-8 px-3 px-md-5 mt-5 mt-md-0">
                             <div class="about__data">
-                                <span class="section-subtitle about__initial"><h4>About us</h4></span>
-                                <h2 class="section-title about__initial">We cook the best tasty food.</h2>
-                                <p class="about__description">We cook the best food in the entire city, with excellent customer service, the best meals and at the best price, visit us.</p>
-                                <a href="#" class="button w-50 px-3">Explore</a>
+                                <span class="section-subtitle about__initial"><h4>Services we Offer</h4></span>
+                                <h2 class="section-title about__initial">We offer you the best delivery Service.</h2>
+                                <p class="about__description">We offer you the best food delivery service in one go. Send your loved onces and your customers delicious home cooked meal at the best price and best Service.</p>
+                                <a href="{% url 'book_delivery_boy' %}" class="button w-50 px-3">Book Your Delivery Boy</a>
                             </div>
                         </div>
                     </div>
@@ -337,32 +339,19 @@
             <!--========== MENU ==========-->
             <section class="menu my-5 bd-container" id="menu">
                 <span class="section-subtitle pt-5"><h4>Special</h4></span>
-                <h2 class="section-title section-color">Menu of the week</h2>
-
+                <h2 class="section-title section-color">Famous Hotel</h2>
                 <div class="menu__container bd-grid">
+                    {% for hotel in hotels %}
                     <div class="menu__content">
-                        <img src="{% static 'images/1.jpg' %}" alt="" class="menu__img">
-                        <h3 class="menu__name">Veg Thali</h3>
-                        <span class="menu__detail">Delicious dish</span>
-                        <span class="menu__preci">Rs. 80.00</span>
-                        <a href="#" class="menu__button"><i class='bx bx-cart-alt'></i></a>
+                        <img src="{{hotel.image.url}}" alt="Hotel image" class="menu__img">
+                        <h3 class="menu__name mt-4">{{hotel.name}}</h3>
+                        <span class="menu__detail mb-3">{{hotel.city}}</span>
+                        <!-- <span class="menu__preci">cost{{hotel.registation_form.cost}}</span> -->
+                        <a href="{% url 'hotel_detail' hotel.id %}" class="menu__button"><i class="far fa-eye"></i></i></a>
                     </div>
-                    <div class="menu__content">
-                        <img src="{% static 'images/2.jpg' %}" alt="" class="menu__img">
-                        <h3 class="menu__name">Egg curry</h3>
-                        <span class="menu__detail">Delicious dish</span>
-                        <span class="menu__preci">Rs.120.00</span>
-                        <a href="#" class="menu__button"><i class='bx bx-cart-alt'></i></a>
-                    </div>
-                    <div class="menu__content">
-                        <img src="{% static 'images/3.jpg' %}" alt="" class="menu__img">
-                        <h3 class="menu__name">Sambhar Dosa</h3>
-                        <span class="menu__detail">Delicious dish</span>
-                        <span class="menu__preci">Rs.40</span>
-                        <a href="#" class="menu__button"><i class='bx bx-cart-alt'></i></a>
-                    </div>
+                    {% endfor %}
                     <div class="menu__content d-flex align-items-center justify-content-center">
-                        <a href="" class="view_more">
+                        <a href="{% url 'all_hotel' %}" class="view_more">
                             <i class="fas fa-arrow-right"></i>
                             <p>view more</p>
                         </a>
@@ -370,84 +359,47 @@
                 </div>
             </section>
 
+            <!---                Testimonials                   --->
             <section class= "my-5" id="testimonials">
                 <div class="container">
                     <div class="section-title-testi testi-font">
-                        <h2 class = "testi-family section-color">Testimonials</h2>
+                        <h2 class = "testi-family section-color">Reviews</h2>
                         <!--<span class="section-separator"></span>-->
-                        <p>Lorem Ipsum is simply dummy text of the printing.</p>
+                        <center>
+                            <p>Customer reviews for our site hotels.</p>
+                        </center>
                     </div>
                 </div>
                 <div class="testimonials-carousel-wrap">
                     <div class="testimonials-carousel">
                         <div class="swiper-container">
                             <div class="swiper-wrapper">
+                                {% for review in reviews %}
                                 <div class="swiper-slide">
                                     <div class="testi-item">
-                                        <div class="testi-avatar"><img src="testimonial/21.jpg"></div>
+                                        <div class="testi-avatar"><img src="{% static 'images/6.jpg' %}"></div>
                                         <div class="testimonials-text-before">
                                             <i class="fa fa-quote-right"></i>
                                         </div>
                                         <div class="testimonials-text testi-font">
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ullam corporis, sint perferendis eveniet rem harum fugiat doloribus ratione facilis.</p>
-                                            <a href="#" class="text-link"></a>
+                                            <h5>{{review.review}}</h5>
+                                            <p>Hotel Name :- {{review.hotel.name}}</p>
                                             <div class="testimonials-avatar">
-                                                <h3>John Doe</h3>
+                                                <h3>{{review.user.name}}</h3>
                                             </div>
                                         </div>
                                         <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div> 
                                     </div>
                                 </div>
-
-                                <div class="swiper-slide">
-                                    <div class="testi-item">
-                                        <div class="testi-avatar"><img src="testimonial/3.jpg"></div>
-                                        <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
-                                        <div class="testimonials-text testi-font">
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ullam corporis, sint perferendis eveniet rem harum fugiat doloribus ratione facilis.</p>
-                                            <a href="#" class="text-link"></a>
-                                            <div class="testimonials-avatar">
-                                                <h3>Doe Boe</h3>
-                                            </div>
-                                        </div>
-                                        <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div> 
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="testi-item">
-                                        <div class="testi-avatar"><img src="testimonial/4.jpg"></div>
-                                        <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
-                                        <div class="testimonials-text testi-font">
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ullam corporis, sint perferendis eveniet rem harum fugiat doloribus ratione facilis.</p>
-                                            <a href="#" class="text-link"></a>
-                                            <div class="testimonials-avatar">
-                                                <h3>Boe Doe</h3>
-                                            </div>
-                                        </div>
-                                        <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div> 
-                                    </div>
-                                </div>
-
-                                <div class="swiper-slide">
-                                    <div class="testi-item">
-                                        <div class="testi-avatar"><img src="testimonial/6.jpg"></div>
-                                        <div class="testimonials-text-before"><i class="fa fa-quote-right"></i></div>
-                                        <div class="testimonials-text testi-font">
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ullam corporis, sint perferendis eveniet rem harum fugiat doloribus ratione facilis.</p>
-                                            <a href="#" class="text-link"></a>
-                                            <div class="testimonials-avatar">
-                                                <h3>Doe John</h3>
-                                            </div>
-                                        </div>
-                                        <div class="testimonials-text-after"><i class="fa fa-quote-left"></i></div> 
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
 
-                    <div class="tc-pagination"></div>
+                    <center>
+                        <div class="tc-pagination"></div>
+                    </center>
+                    
                 </div>
             </section>
 
@@ -470,6 +422,7 @@
 {% endblock content %}
 {% block customscript %}
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
     <script src="{% static 'js/base.js' }"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.4.8/swiper-bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 {% endblock customscript %}

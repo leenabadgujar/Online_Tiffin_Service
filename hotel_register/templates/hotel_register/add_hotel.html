@@ -1,0 +1,82 @@
+{% extends "food/base.html" %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/add_hotel.css' %}">
+{% endblock style %}
+
+{% block content %}
+{% if messages %}
+    {% for message in messages %}
+        <div id="message" class="message">
+            <h6 id="message_text" class="w-100 mb-0 text_{{message.tags}}">{{message}}</h6>
+            <div id="underline" class="underline bg_{{message.tags}}"></div>
+        </div>
+    {% endfor %}
+{% endif %}
+
+<div class="bhead">
+    <center>
+        <h2 class="boy_heading boy_padding">Serve with us</h2>
+    </center>
+</div>    
+
+<div class="boy">
+    <form method="POST" class="py-4" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{ image_form.management_form }}
+        <!-- =========Personal Information========== -->
+        <h5 class="boy_heading boy_padding">Personal Information</h5>
+        <hr>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6 pb-4 pb-md-0">
+                <label for="" class="label">Owner Name :- </label>
+                <input class="input" value={{request.user.name}} disabled id="owner_name" type="text">
+            </div>
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Owner Contact Number :- </label>
+                <input class="input" id="number" value={{request.user.number}} disabled type="number">
+            </div>
+        </div>
+        <div class="row boy_padding mb-3">
+            <div class="col-12 col-md-6">
+                <label for="" class="label">Owner Email Id:- </label>
+                <input class="input" value={{request.user.email}} disabled id="email" type="text">
+            </div>
+        </div>
+
+
+        <!-- =========physical address========== -->
+        <h5 class="boy_heading boy_padding mt-5">Hotel Information</h5>
+        <hr>
+        <div class="row boy_padding mb-3">
+            {% for field in add_hotel_form %}
+                <div id={{field.name}} class="col-12 col-md-6 pb-3" >
+                    <label for="address" class="label">{{field.label}} :- </label>
+                    {{field}}
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- =========Pictures========== -->
+        <h5 class="boy_heading boy_padding mt-5">Addition Hotel Pictures</h5>
+        <hr>  
+        <div class="mx-4 field px-2">
+            {% for field in image_form %}
+                <div class="d-flex flex-wrap align-items-center py-3 id_{{field.name}}">
+                    <label for=id_{{field.name}} class=id_{{field.name}}>{{field.label_tag|striptags}}- </label>{{field}}
+                </div>
+            {% endfor %}
+        </div>
+        
+        <!-- =========Submit========== -->
+        <center>
+            <button class="mx-4 button my-3" id="submit">Submit</button>
+        </center>
+    </form>
+</div>
+
+{% endblock content %}
+{% block customscript %}
+<script src="{% static 'js/hotel_register.js' %}"></script>
+{% endblock customscript %}
