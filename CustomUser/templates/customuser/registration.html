@@ -35,26 +35,10 @@
                     <div class="card o-hidden shadow-lg">
                         <div class="card-body p-0">
                             <div class="row mx-0">
-                                <div class="col-lg-7 pb-5 form-left position-relative">
-                                    <div class="home">
-                                        <a href=""><i class="uil uil-home"></i></a>
+                                <div class="col-lg-7 pb-4 form-left position-relative">
+                                    <div class="text-center mt-4">
+                                        <h1 class="h2 judul pb-1 text-bold">Create New Account</h1>
                                     </div>
-
-                                    <div class="text-center mt-5">
-                                        <h1 class="h2 judul pb-3 text-bold">Create New Account</h1>
-                                    </div>
-
-                                    <!-- {% if messages %}
-                
-                                        {% for message in messages %}
-                                        <div class="alert alert-info">
-                                            {{ message }}
-                                        </div>
-                                        {% endfor %}
-                  
-                                    {% endif %} -->
-
-
                                     <form method="POST" novalidate class="mt-2" name="myForm">
                                         {% csrf_token %}
                                         {% for fm in form %}

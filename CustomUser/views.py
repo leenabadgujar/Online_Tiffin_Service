@@ -30,7 +30,7 @@ def registration(request):
             
             if form.is_valid():
                 subject = 'Your accounts need to be verified'
-                message = f'Hi paste the link to verify your account http://127.0.0.1:8000/user/verify/{auth_token}'
+                message = f'Welcome to Online Tiffin Service. Thanks for registering on our website. Follow this link to verify your account http://127.0.0.1:8000/user/verify/{auth_token}'
                 email_from = settings.EMAIL_HOST_USER
                 recipient_list = [email]
                 res = send_mail(subject, message, email_from, recipient_list)
@@ -38,7 +38,7 @@ def registration(request):
                 new_form = form.save(commit=False)
                 new_form.auth_token = auth_token
                 new_form.save()
-                #messages.success(request, 'Registration Successful.')
+                # messages.success(request, 'Registration Successful.')
                 return redirect('token_send')
         except Exception as e:
             print(e)
@@ -55,8 +55,7 @@ def login_view(request):
         if request.POST['email'] and request.POST['password']:
             email = request.POST['email']
             verify_user = CustomUser.objects.get(email=email)
-            print(verify_user)
-            print(verify_user.is_verified)
+            
             if not verify_user.is_verified:
                 messages.error(
                     request, 'Profile is not verified check your mail.')
@@ -64,7 +63,7 @@ def login_view(request):
             if form.is_valid():
                 password = request.POST['password']
                 user = authenticate(email=email, password=password)
-                print(user)
+                
                 if user:
                     login(request, user)
                     messages.success(request, 'Login Successfully.')

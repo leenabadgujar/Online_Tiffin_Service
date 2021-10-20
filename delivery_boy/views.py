@@ -213,20 +213,22 @@ def book_delivery_boy(request):
                 messages.error(request, "Try again")
 
         application_forms = Application_Form.objects.filter(user=request.user)
+        print(application_forms)
         delivery_boys = Delivery.objects.filter(city__iexact=request.user.city)
 
         applications = None
         total_amount = 0
         application_form = application_forms.last()
         
-        if application_form.status == "Accepted":
-            d1 = application_form.delivery_start
-            d2 = application_form.delivery_end
-            delta = d2 - d1
-            total_amount = (delta.days+1) * \
-                application_form.delivery_boy.money
-            applications = application_form
-            delivery_boys = None
+        if application_form:
+            if application_form.status == "Accepted":
+                d1 = application_form.delivery_start
+                d2 = application_form.delivery_end
+                delta = d2 - d1
+                total_amount = (delta.days+1) * \
+                    application_form.delivery_boy.money
+                applications = application_form
+                delivery_boys = None
 
         action = request.GET.get('action')
         order = None

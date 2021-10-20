@@ -54,7 +54,7 @@
                     <h3 class="fw-bold my-3">Reviews</h3>
                     {% if hotel_ratings|length %}
                         {% for hotel_rating in hotel_ratings %} 
-                        <div class="border rounded">
+                        <div class="border rounded mt-3">
                             <div class="p-3 text-dark under_border">
                                 <h5 class="text-capitalize d-inline-block  mb-2">Customer Name :- {{hotel_rating.user.name}}</h5>
                                 <span class="float-end">

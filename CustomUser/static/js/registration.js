@@ -136,6 +136,22 @@ password2.addEventListener('keyup', () => {
     }
 });
 
+city.addEventListener('keyup', () => {
+    message.classList.remove('d-none');
+    if(city.value){ 
+        messageText.innerText = "Valid city.";
+        messageText.style.color = "chartreuse";
+        underline.style.background = "chartreuse"; 
+        checkCity = true;
+    }
+    else{
+        checkCity = false;
+        messageText.innerText = "City can't be Empty.";
+        messageText.style.color = "red";
+        underline.style.background = "red";
+    }
+});
+
 document.addEventListener('keyup', () => {
     (checkEmail && checkName && checkNumber && checkCity && checkPassword1 && checkPassword2) ? register.removeAttribute('disabled') : register.setAttribute('disabled', true);
 })
