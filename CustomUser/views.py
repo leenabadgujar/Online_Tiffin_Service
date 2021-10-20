@@ -30,7 +30,7 @@ def registration(request):
             
             if form.is_valid():
                 subject = 'Your accounts need to be verified'
-                message = f'Welcome to Online Tiffin Service. Thanks for registering on our website. Follow this link to verify your account http://127.0.0.1:8000/user/verify/{auth_token}'
+                message = f'Welcome to Online Tiffin Service. Thanks for registering on our website. Follow this link to verify your account https://online-tiffin-service.herokuapp.com/user/verify/{auth_token}'
                 email_from = settings.EMAIL_HOST_USER
                 recipient_list = [email]
                 res = send_mail(subject, message, email_from, recipient_list)
