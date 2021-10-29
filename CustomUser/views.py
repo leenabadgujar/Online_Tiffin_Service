@@ -11,8 +11,6 @@ from django.core.mail import send_mail
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
-
 def registration(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -54,12 +52,18 @@ def login_view(request):
         form = Login(request.POST)
         if request.POST['email'] and request.POST['password']:
             email = request.POST['email']
-            verify_user = CustomUser.objects.get(email=email)
             
+            try:
+                verify_user = CustomUser.objects.get(email=email)
+            except:
+                messages.error(request, "User with this email address doesn't exits.")
+                return redirect('login')
+
             if not verify_user.is_verified:
                 messages.error(
                     request, 'Profile is not verified check your mail.')
                 return redirect('token_send')
+
             if form.is_valid():
                 password = request.POST['password']
                 user = authenticate(email=email, password=password)

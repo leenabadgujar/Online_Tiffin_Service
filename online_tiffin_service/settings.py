@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-c2mk7v2bg$6ek==g9!gx=4i3x)3beea6^))@_72mn7fm)#6d*=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['online-tiffin-service.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['online-tiffin-service.herokuapp.com', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
@@ -126,11 +126,13 @@ AUTH_USER_MODEL = 'CustomUser.CustomUser'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp.hostinger.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'onlineTiffinService.ots@gmail.com'
-EMAIL_HOST_PASSWORD = 'adminots'
+EMAIL_HOST_USER = 'test@hertzsoft.com'
+EMAIL_HOST_PASSWORD = 'DmUCg8CvkCrI'
 
 KEY_ID = "rzp_test_0zMZSOuRyCELpK"
 KEY_SECRET = "PDQ3S6DzaAPxaEn9QitOrV9p"
+
+# Ots@1234
