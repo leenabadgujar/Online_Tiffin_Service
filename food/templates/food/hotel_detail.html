@@ -98,6 +98,12 @@
                             <div class="card-body">
                                 <h4 class="card-title fw-bold">{{menu_item.name}}<span class="price"><i class="fas fa-rupee-sign fs-6"></i> {{menu_item.price}}</span></h4>
                                 <p class="card-text">{{menu_item.description}}</p>
+                                <div class="d-flex text_orange">
+                                    <p>Calories - {{menu_item.calories}}</p>
+                                    <p class="mx-4">Protein - {{menu_item.protein}}</p>
+                                    <p class="mx-4">Fat - {{menu_item.fats}}</p>
+                                    <p class="mx-4">Sugar - {{menu_item.sugar}}</p>
+                                </div>
                                 <div class="card-text">
                                     <small class="text-muted">Type :- {{menu_item.food_type}}</small>
                                     <input type="text" hidden name="menu" value={{menu_item.id}}>

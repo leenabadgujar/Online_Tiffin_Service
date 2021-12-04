@@ -94,6 +94,46 @@
     <hr class="mt-4" />
   </div>
   {% endfor %}
+
+  <h5>Calorie needs for women and men can depend on their age, size, and activity level.</h5>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Table</th>
+        <th scope="col">0–06 Age</th>
+        <th scope="col">07–18 Age</th>
+        <th scope="col">19–30 Age</th>
+        <th scope="col">31–59 Age</th>
+        <th scope="col">Over 60</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Women</th>
+        <td>1,200</td>
+        <td>3,000</td>
+        <td>2,000–2,400</td>
+        <td>1,800–2,200</td>
+        <td>1,600–2,000</td>
+      </tr>
+      <tr>
+        <th scope="row">Men</th>
+        <td>1,200</td>
+        <td>3,000</td>
+        <td>2,400–3,000</td>
+        <td>2,200–3,000</td>
+        <td>2,000–2,600</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="mt-4">
+    <h5>The cart food contains <span id="calorie">{{calorie}}</span> Calories, <span id="protein">{{protein}}</span> Proteins, <span id="fat">{{fat}}</span> Fats, <span id="sugar">{{sugar}}</span> Sugar.</h5>
+    <!-- <h5>Calorie - <span id="calorie">{{calorie}}</span></h5>
+    <h5>Protein - <span id="protein">{{protein}}</span></h5>
+    <h5>Fat - <span id="fat">{{fat}}</span></h5>
+    <h5>Sugar - <span id="sugar">{{sugar}}</span></h5> -->
+  </div>
 </div>
 
 
@@ -135,8 +175,8 @@
       <!-- <a href="{% url 'home' %}" class="button fw-bold">Countinue Shoping</a> -->
       <div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end py-2">
-          <a href="{% url 'home'%}" class="button btn btn-dark me-md-2">Continue Shopping</a>
-          <button type="submit" class="button btn btn-dark">Continue to Payment</button>
+          <a href="{% url 'home'%}" class="button border-orange me-md-2">Continue Shopping</a>
+          <button type="submit" class="button border-orange">Continue to Payment</button>
         </div>
       </div>
     </div>
@@ -321,10 +361,15 @@
         menu_id: id,
       },
       success: function (data) {
+        console.log(data);
         quantity.innerText = data.quantity;
         document.getElementById("total_amount").innerText =
-          "Total Amount :- " + data.total_amount;
-        document.getElementById(`${id}`).innerText = data.item_price;
+          "Total Amount :- ₹ " + data.total_amount;
+        document.getElementById(`${id}`).innerText = "₹ " + data.item_price;
+        document.getElementById('calorie').innerText = data.calorie;
+        document.getElementById('protein').innerText = data.protein;
+        document.getElementById('fat').innerText = data.fat;
+        document.getElementById('sugar').innerText = data.sugar;
       },
     });
   });
@@ -339,10 +384,15 @@
         menu_id: id,
       },
       success: function (data) {
+        console.log(data);
         quantity.innerText = data.quantity;
         document.getElementById("total_amount").innerText =
-          "Total Amount :- " + data.total_amount;
-        document.getElementById(`${id}`).innerText = data.item_price;
+          "Total Amount :- ₹ " + data.total_amount;
+        document.getElementById(`${id}`).innerText = "₹ " + data.item_price;
+        document.getElementById('calorie').innerText = data.calorie;
+        document.getElementById('protein').innerText = data.protein;
+        document.getElementById('fat').innerText = data.fat;
+        document.getElementById('sugar').innerText = data.sugar;
       },
     });
   });

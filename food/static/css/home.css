@@ -188,20 +188,21 @@ img {
 .button {
   display: inline-block;
   /* width: 50%; */
-  background-color: black;
+  background: transparent;
   color: var(--first-color-alt);
   text-decoration: none;
-  padding: 0.5rem 3rem;
-  border-radius: 50px;
+  padding: 0.3rem 3rem;
   text-align: center;
   font-weight: 500;
-  letter-spacing: 1.5px;
+  /* letter-spacing: 1.5px; */
   font-family: var(--body-font);
-  font-size: 20px;
+  font-size: 19px;
   outline: none;
+  border: 1px solid orange;
 }
 .button:hover {
   color: white;
+  background: orange;
 }
 
 /*========== ABOUT ==========*/
@@ -643,8 +644,8 @@ img {
 }
 @media screen and (min-width: 1163px) {
   .menu__container {
-    grid-template-columns: repeat(4, 210px);
-    column-gap: 4rem;
+    grid-template-columns: repeat(3, 220px);
+    column-gap: 6rem;
   }
 }
 

@@ -1,6 +1,6 @@
-body {
+/* body {
   font-family: "Times New Roman", Times, serif;
-}
+} */
 .bg_grey {
   background-color: rgb(246, 246, 246);
 }
@@ -10,8 +10,6 @@ body {
 }
 .cart_img {
   width: 100% !important;
-  /* min-height: 200px; */
-  /* max-height: 300px; */
 }
 .product_desc {
   text-align: justify;
@@ -50,4 +48,7 @@ body {
 }
 .text_orange:hover {
   color: rgb(0, 174, 255) !important;
+}
+.border-orange{
+  border: 1px solid orange;
 }

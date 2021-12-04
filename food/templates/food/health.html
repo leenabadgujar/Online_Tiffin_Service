@@ -1,0 +1,194 @@
+{% extends "food/base.html" %}
+{% load static %}
+
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/health.css' %}">
+{% endblock style %}
+
+{% block content %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{message.tags}}" role="alert">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    
+    <!--========== Title ==========-->
+    <section class="title">
+        <img src="{% static 'images/home.jpg' %}" alt="title image" class="parallax">
+        <div class="text-wrapper">
+            <h5 class="headline-about">Finding balance in food, health and wellness</h5>
+            <h2 class="headline">Eat Mindfully,</h2>
+            <h2 class="headline">Sweat Often & </h2>
+            <h2 class="headline">Self Love Always</h2>
+            <!-- <div class="headline-description">
+                <div class="seperator">
+                    <div class="line line-left"></div>
+                    <div class="asterisk"><i class="fa fa-asterisk" aria-hidden="true"></i></div>
+                    <div class="line line-right"></div>
+                </div>
+            </div> -->
+            <!--<h2 class="subheadline">Welcome to home of food.</h2>-->
+            <a href="#" class="btn btn-lg btn-outline-light download-button"> CONTACT US <i
+                    class="fas fa-arrow-right"></i></a>
+            <a href="#" class="btn btn-lg btn-outline-light download-button"> LEARN MORE <i
+                    class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+
+    <!--====================How we work========================-->
+    <section class="work-img">
+        <div>
+            <img alt="section-bg"
+                src="https://b.zmtcdn.com/merchant-onboarding/f57794be6408563354c463c702ab45b91600672364.png">
+        </div>
+    </section>
+
+    <section class="work">
+        <div class="container">
+            <!-- <div class="section-title-testi testi-font">
+                <h2 class = "testi-family section-color">How it Works ?</h2>
+            </div> -->
+
+            <div class="row ">
+                <div class="col-12 col-md-3 col-sm-6 pb-5">
+                    <div class="card h-100">
+                        <img src="https://cdn-icons-png.flaticon.com/512/2224/2224109.png" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <center>
+                                <h5 class="card-title">Nutrition Strategies</h5>
+                                <!-- <p class="card-text1">Sign Up for Online Food Services.</p> -->
+                                <h6 class="card-text2">Create your own profile by registering in our page.</h6>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3 col-sm-6 pb-5">
+                    <div class="card h-100">
+                        <img src="https://cdn-icons.flaticon.com/png/512/3476/premium/3476097.png?token=exp=1638451834~hmac=802f457ac0d355b5cd16bb779e200f47"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <center>
+                                <h5 class="card-title">Workout Routines</h5>
+                                <!-- <p class="card-text1">Register for online ordering</p> -->
+                                <h6 class="card-text2">For delivering orders to users around your area.</h6>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3 col-sm-6 pb-5">
+                    <div class="card h-100">
+                        <img src="https://cdn-icons-png.flaticon.com/512/4727/4727364.png" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <center>
+                                <h5 class="card-title">Support Motivation</h5>
+                                <!-- <p class="card-text1">Start receiving your orders</p> -->
+                                <h6 class="card-text2">Manage your orders and daily menu update through web.</h6>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3 col-sm-6 pb-5">
+                    <div class="card h-100">
+                        <img src="https://cdn-icons-png.flaticon.com/512/3938/3938360.png" class="card-img-top"
+                            alt="...">
+                        <div class="card-body">
+                            <center>
+                                <h5 class="card-title">First Hand Advice</h5>
+                                <!-- <p class="card-text1">Start receiving your orders</p> -->
+                                <h6 class="card-text2">Manage your orders and daily menu update through web.</h6>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--Contact us-->
+    <section class="contact1">
+        <div class="content1">
+            <h2>Contact Us</h2>
+            <p>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Itaque laudantium delectus ab necessitatibus
+            </p>
+        </div>
+        <div class="container1">
+            <div class="contactInfo1">
+                <div class="box1">
+                    <div class="icon1">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="text1">
+                        <h3> Address</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, ipsam!</p>
+                    </div>
+                </div>
+                <div class="box1">
+                    <div class="icon1">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="text1">
+                        <h3> Email</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, ipsam!</p>
+                    </div>
+                </div>
+                <div class="box1">
+                    <div class="icon1">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="text1">
+                        <h3>Phone</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, ipsam!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contactForm1">
+                <form>
+                    <h2>Make an Appointment</h2>
+                    <div class="inputBox1">
+                        <input type="text" name="" required="required">
+                        <span>Full Name</span>
+                    </div>
+                    <div class="inputBox1">
+                        <input type="text" name="" required="required">
+                        <span>Email</span>
+                    </div>
+                    <div class="inputBox1">
+                        <textarea required="required"></textarea>
+                        <span>Type your message</span>
+                    </div>
+                    <div class="inputBox1">
+                        <input type="submit" name="" value="Send Message">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
+{% block script %}
+    <script>
+        var product_desc = document.querySelectorAll('.product_desc')
+        for (let int = 0; int < product_desc.length; int++) {
+            const string = product_desc[int].innerText;
+            var string150 = string.substr(0, 170) 
+            product_desc[int].innerHTML = string150 + '  ....' 
+        }
+
+        window.addEventListener('scroll',function() {
+            const parallax = document.querySelector('.parallax');
+            let scrollPosition = window.pageYOffset;
+
+            parallax.style.transform = 'translateY(' + scrollPosition * -.3 + 'px)';
+        });
+    </script>
+{% endblock script %}  

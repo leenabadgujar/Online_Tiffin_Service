@@ -215,11 +215,11 @@ def book_delivery_boy(request):
         application_forms = Application_Form.objects.filter(user=request.user)
         print(application_forms)
         delivery_boys = Delivery.objects.filter(city__iexact=request.user.city)
-
+        print(delivery_boys)
         applications = None
         total_amount = 0
         application_form = application_forms.last()
-        
+        print("s", application_form)
         if application_form:
             if application_form.status == "Accepted":
                 d1 = application_form.delivery_start
@@ -256,7 +256,6 @@ def book_delivery_boy(request):
             payment.application_Form = valid_applications[-1]
             payment.save()
 
-        
         show = False
 
         try:
@@ -265,6 +264,8 @@ def book_delivery_boy(request):
             delivery_boy_payment = False
 
         print(delivery_boy_payment)
+        print(applications)
+        print(delivery_boys)
         if not delivery_boy_payment:
             show = True
             return render(request, 'food/book_delivery_boy.html', {"delivery_boys": delivery_boys, "applications": applications, "total_amount": total_amount, "order": order, "show" : show})

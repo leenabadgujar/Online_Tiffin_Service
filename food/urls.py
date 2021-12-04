@@ -18,4 +18,5 @@ urlpatterns = [
     path('search/', views.search_items, name="search"),
     path('all_hotel/', views.all_hotel, name="all_hotel"),
     path('all_menu/', views.all_menu, name="all_menu"),
+    path('health/', views.health, name="health"),
 ]

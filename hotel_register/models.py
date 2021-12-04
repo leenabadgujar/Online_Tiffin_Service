@@ -61,6 +61,10 @@ class Menu(models.Model):
     description = models.CharField(max_length=1000)
     image = models.ImageField(upload_to="menu")
     food_type = models.CharField(max_length=20, choices=MENU_CHOICE)
+    calories = models.DecimalField(default=0, blank=False, null=False, max_digits=8, decimal_places=2)
+    protein = models.DecimalField(default=0, blank=False, null=False, max_digits=8, decimal_places=2)
+    fats = models.DecimalField(default=0, blank=False, null=False, max_digits=8, decimal_places=2)
+    sugar = models.DecimalField(default=0, blank=False, null=False, max_digits=8, decimal_places=2)
 
     def __str__(self):
         return self.name

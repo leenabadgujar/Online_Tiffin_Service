@@ -19,7 +19,7 @@ client = razorpay.Client(auth=(KEY_ID, KEY_SECRET))
 
 def home(request):
     if request.user.is_authenticated:
-        hotels = Hotel.objects.all().order_by("?")[:7]
+        hotels = Hotel.objects.all().order_by("?")[:5]
         reviews = Rating.objects.all().order_by("?")[:5]
         return render(request, 'food/home.html', {"hotels": hotels, "reviews": reviews})
 
@@ -114,8 +114,19 @@ def my_cart(request):
     total_amount = 0
     user = None
     user = request.user
+    calorie = 0
+    protein = 0
+    fat = 0
+    sugar = 0
     for cart in carts:
         total_amount += (cart.menu.price * cart.quantity)
+        for i in range(cart.quantity):
+            calorie += cart.menu.calories
+            protein += cart.menu.protein
+            fat += cart.menu.fats
+            sugar += cart.menu.sugar
+
+    print(calorie, protein, fat, sugar)
 
     if request.method == "POST":
         menu_value = request.POST['menu']
@@ -131,11 +142,11 @@ def my_cart(request):
     if action == 'create_payment':
         delivery_time = request.GET['time_delivery']
         time_from = request.GET['time_from']
-        print(time_from)
+        
         time_to = request.GET['time_to']
         if not delivery_time:
             messages.error(request, "Delivery time is required.")
-            return render(request, 'food/cart.html', {"carts": carts, "total_amount": total_amount, "order": order, "payment": payment})
+            return render(request, 'food/cart.html', {"carts": carts, "total_amount": total_amount, "order": order, "payment": payment,"calorie" : calorie, "protein" : protein, "fat" : fat, "sugar" : sugar})
 
         order_id = Order()
         order_id.user = request.user
@@ -202,7 +213,7 @@ def my_cart(request):
         payment.menu_details = order_id
         payment.save()
 
-    return render(request, 'food/cart.html', {"carts": carts, "total_amount": total_amount, "order": order, "payment": payment})
+    return render(request, 'food/cart.html', {"carts": carts, "total_amount": total_amount, "order": order, "payment": payment, "calorie" : calorie, "protein" : protein, "fat" : fat, "sugar" : sugar})
 
 
 def plus_cart(request):
@@ -214,17 +225,31 @@ def plus_cart(request):
             cart.quantity += 1
             cart.save()
             total_amount = 0.0
+            calorie = 0
+            protein = 0
+            fat = 0
+            sugar = 0
             item_price = cart.quantity * cart.menu.price
             cart_products = Cart.objects.filter(user=request.user)
             if cart_products:
                 for cart_prouct in cart_products:
-                    total_amount += (cart_prouct.quantity *
-                                     cart_prouct.menu.price)
+                    total_amount += (cart_prouct.quantity * cart_prouct.menu.price)
+                    for i in range(cart_prouct.quantity):
+                        calorie += cart_prouct.menu.calories
+                        protein += cart_prouct.menu.protein
+                        fat += cart_prouct.menu.fats
+                        sugar += cart_prouct.menu.sugar
+
+                print(calorie, protein, fat, sugar)
 
                 data = {
                     'quantity': cart.quantity,
                     'total_amount': total_amount,
-                    'item_price': item_price
+                    'item_price': item_price,
+                    'calorie' : calorie,
+                    'protein' : protein,
+                    'fat' : fat,
+                    'sugar' : sugar,
                 }
                 return JsonResponse(data)
         else:
@@ -248,17 +273,31 @@ def minus_cart(request):
                 cart.save()
 
             total_amount = 0.0
+            calorie = 0
+            protein = 0
+            fat = 0
+            sugar = 0
             item_price = cart.quantity * cart.menu.price
             cart_products = Cart.objects.filter(user=request.user)
             if cart_products:
                 for cart_prouct in cart_products:
-                    total_amount += (cart_prouct.quantity *
-                                     cart_prouct.menu.price)
+                    total_amount += (cart_prouct.quantity * cart_prouct.menu.price)
+                    for i in range(cart_prouct.quantity):
+                        calorie += cart_prouct.menu.calories
+                        protein += cart_prouct.menu.protein
+                        fat += cart_prouct.menu.fats
+                        sugar += cart_prouct.menu.sugar
+
+                print(calorie, protein, fat, sugar)
 
                 data = {
                     'quantity': cart.quantity,
                     'total_amount': total_amount,
-                    'item_price': item_price
+                    'item_price': item_price,
+                    'calorie' : calorie,
+                    'protein' : protein,
+                    'fat' : fat,
+                    'sugar' : sugar,
                 }
                 return JsonResponse(data)
         else:
@@ -324,10 +363,34 @@ def search_items(request):
 
 
 def all_hotel(request):
+    city_list = []
     hotels = Hotel.objects.all()
-    return render(request, 'food/all_hotel.html', {"hotels": hotels, "menu": False})
+    for i in hotels:
+        if i.city not in city_list:
+            city_list.append(i.city.capitalize())
+
+    if request.method == "POST":
+        city__list = []
+        for city in request.POST.getlist('city'):
+            city__list.append(city.upper())
+            city__list.append(city.lower())
+            city__list.append(city.capitalize())
+        hotels = Hotel.objects.filter(city__in = city__list)
+
+    return render(request, 'food/all_hotel.html', {"hotels": hotels, "menu": False, 'city_list' : city_list})
 
 
 def all_menu(request):
+    city_list = []
     menus = Menu.objects.all()
-    return render(request, 'food/all_hotel.html', {"hotels": menus, "menu": True})
+    for i in menus:
+        if i.food_type not in city_list:
+            city_list.append(i.food_type)
+
+    if request.method == "POST":
+        menus = Menu.objects.filter(food_type__in = request.POST.getlist('city'))
+
+    return render(request, 'food/all_hotel.html', {"hotels": menus, "menu": True, 'city_list' : city_list})
+
+def health(request):
+    return render(request, 'food/health.html')

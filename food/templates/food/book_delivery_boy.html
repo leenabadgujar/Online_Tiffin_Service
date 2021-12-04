@@ -12,6 +12,7 @@
         <img src = "{% static 'images/delivery_boy1.jpg' %}" alt="Delivery Image" class="w-100" style="height: 70vh; ">
     </header> -->
     <div class="container mt-5">
+        {% if delivery_boys|length or applications %}
         {% if delivery_boys %}
         <h1 class="text-center">Book Your Delivery Boy</h1>
         {% for delivery_boy in delivery_boys %}
@@ -64,8 +65,6 @@
         </div>
         {% endfor %}
         {% else %}
-
-
         <div class="container-fluid mx-lg-0">
             <div class="row justify-content-center">
                 <div class="col-xl-10 col-lg-12 col-md-9 px-0">
@@ -78,8 +77,6 @@
                                             <h1 class="text-center h2 judul pb-3 text-bold">Booked Delivery Boy Details
                                             </h1>
                                         </div>
-
-
                                     </div>
                                     <h4 class="text-center"></h4>
                                     <h5 class="text-center">Name:- {{applications.delivery_boy.customer.name}}</h5>
@@ -128,6 +125,9 @@
                 </div>
             </div>
         </div>
+        {% endif %}
+        {% else %}
+            <h1>No delivery boy is found in your city.</h1>
         {% endif %}
         <div class="mx-0">
             <div class="my-3">

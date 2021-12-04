@@ -1,0 +1,405 @@
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@800&family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bitter&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Niconne&display=swap");
+
+.overflow {
+  height: 100vh;
+}
+/*---------------------Title----------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.title {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-left: 5%;
+}
+
+.headline-about {
+  font-family: "Bitter", serif;
+  color: rgb(255, 255, 255);
+  font-weight: 100;
+  letter-spacing: 0.5px;
+}
+
+.headline {
+  font-size: 2.8rem;
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 196, 0);
+}
+
+.headline::first-letter {
+  font-size: 3.8rem;
+}
+
+.headline-below {
+  color: rgb(211, 211, 211);
+}
+
+.subheadline {
+  font-size: 2rem;
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  color: white;
+  line-height: 3rem;
+  letter-spacing: 2px;
+}
+
+.parallax {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.overflow {
+  height: 200vh;
+}
+
+.service-font {
+  font-family: "Poppins", sans-serif;
+}
+
+.service-head {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+
+/*--========== Title line ==========*/
+.seperator {
+  display: flex;
+  align-items: center;
+}
+.line {
+  width: 100%;
+  max-width: 19rem;
+  height: 0.25rem;
+  background-color: #fff;
+  position: relative;
+}
+.line-right::before,
+.line-left::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0.6rem solid transparent;
+}
+.line-right::before {
+  border-right-color: #fff;
+  right: 0;
+}
+.line-left::before {
+  border-left-color: #fff;
+  left: 0;
+}
+.asterisk {
+  font-size: 1.2rem;
+  color: orange;
+  margin: 0 1.6rem;
+}
+
+.btn {
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+/*===== Frequently asked questions =====*/
+.faq-section {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.faq-head {
+  margin: 50px 0;
+}
+
+.accordion-item {
+  background-color: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 0 rgba(110, 130, 208, 0.18);
+}
+.accordion-button:not(.collapsed) {
+  color: white;
+  background-color: #283042;
+  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
+}
+
+.accordion-button {
+  color: white;
+  background-color: #283042;
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: white;
+  outline: 0px;
+  box-shadow: white 0px 0px 0px 0.25rem;
+}
+
+.accordion-body {
+  border-left: 5px orange solid;
+}
+
+/*changing accordion button color*/
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  transform: rotate(-180deg);
+}
+
+.accordion-button::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFFFFF'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/*for setting radius*/
+.accordion-item:last-of-type {
+  border-bottom-right-radius: 0.6rem;
+  border-bottom-left-radius: 0.6rem;
+}
+
+.accordion-item:first-of-type {
+  border-top-left-radius: 0.6rem;
+  border-top-right-radius: 0.6rem;
+}
+
+.accordion-item:last-of-type .accordion-button.collapsed {
+  border-bottom-right-radius: calc(0.6rem - 1px);
+  border-bottom-left-radius: calc(0.6rem - 1px);
+}
+
+.accordion-item:first-of-type .accordion-button {
+  border-top-left-radius: calc(0.6rem - 1px);
+  border-top-right-radius: calc(0.6rem - 1px);
+}
+
+/*-------------Working section-----------*/
+.working {
+  width: 100%;
+  height: 25%;
+}
+
+.work-img {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.work {
+  padding-top: 37px;
+}
+
+.card-img-top {
+  width: 35%;
+  height: 30%;
+  margin: 10% auto;
+  background-color: rgb(255, 245, 246);
+  margin-bottom: 42px;
+  border-radius: 20%;
+}
+
+.card {
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 1px 1px 1px 1px rgba(164, 170, 196, 0.18);
+}
+
+.card-title {
+  color: #283042;
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.card-text1 {
+  color: #515661;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  padding-bottom: 5%;
+}
+
+.card-text2 {
+  color: #8a8c91;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  margin-top: 15%;
+}
+
+/*------------Footer------------*/
+.footer__text {
+  margin-top: 0;
+}
+
+/*---------------Contact Us-------------------*/
+.contact {
+  margin-top: 100px;
+}
+
+.bottom {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  margin-bottom: 15px;
+}
+
+.contact__initial {
+  text-align: center;
+}
+
+.bottom:hover {
+  color: rgb(250, 221, 167);
+}
+
+/*Contact us*/
+.contact1 {
+  position: relative;
+  min-height: 100vh;
+  padding: 50px 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: url("../images/contact.jpg");
+  background-size: cover;
+}
+.contact1 .content1 {
+  max-width: 800px;
+  text-align: center;
+}
+.contact1 .content1 h2 {
+  font-size: 36px;
+  font-weight: 500;
+  color: orange;
+}
+.contact1 .content1 p {
+  font-weight: 300;
+  color: #fff;
+}
+.container1 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.container1 .contactInfo1 {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+.container1 .contactInfo1 .box1 {
+  position: relative;
+  padding: 20px 0;
+  display: flex;
+}
+.container1 .contactInfo1 .box1 .icon1 {
+  min-width: 60px;
+  height: 60px;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  font-size: 22px;
+}
+.container1 .contactInfo1 .box1 .text1 {
+  display: flex;
+  margin-left: 20px;
+  font-size: 16px;
+  color: #fff;
+  flex-direction: column;
+  font-weight: 300;
+}
+.container1 .contactInfo1 .box1 .text1 h3 {
+  font-weight: 500;
+  color: orange;
+}
+.contactForm1 {
+  width: 40%;
+  padding: 40px;
+  background: #fff;
+}
+.contactForm1 h2 {
+  font-size: 30px;
+  color: #333;
+  font-weight: 500;
+}
+.contactForm1 .inputBox1 {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+.contactForm1 .inputBox1 input,
+.contactForm1 .inputBox1 textarea {
+  width: 100%;
+  padding: 5px 0;
+  font-size: 16px;
+  margin: 10px 0;
+  border: none;
+  border-bottom: 2px solid #333;
+  outline: none;
+  resize: none;
+}
+.contactForm1 .inputBox1 span {
+  position: absolute;
+  left: 0;
+  padding: 5px 0;
+  font-size: 16px;
+  margin: 10px 0;
+  pointer-events: none;
+  transition: 0.5s;
+  color: #666;
+}
+.contactForm1 .inputBox1 input:focus ~ span,
+.contactForm1 .inputBox1 input:valid ~ span,
+.contactForm1 .inputBox1 textarea:focus ~ span,
+.contactForm1 .inputBox1 textarea:valid ~ span {
+  color: orange;
+  font-size: 12px;
+  transform: translateY(-20px);
+}
+.contactForm1 .inputBox1 input[type="submit"] {
+  background: black;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  font-size: 18px;
+}
+@media (max-width: 991px) {
+  .contact1 {
+    padding: 50px;
+  }
+  .container1 {
+    flex-direction: column;
+  }
+  .container1 .contactInfo1 {
+    margin-bottom: 40px;
+  }
+  .container1 .contactInfo1,
+  .contactForm1 {
+    width: 100%;
+  }
+}
+.fa,
+.fab,
+.fad,
+.fal,
+.far,
+.fas {
+  color: orange;
+}
